@@ -19,3 +19,12 @@ star the repo, or keep checking back.
 * Not - switchable to invert either waveforms (-5 to 5) or CV (0 to 10)
 
 For more information, see the [documentation](docs/README.md).
+
+## Building
+
+```
+$ git clone https://github.com/JerrySievert/CharredDesert.git
+$ cd CharredDesert
+$ git submodule update --init
+$ make
+```
