@@ -11,7 +11,7 @@ star the repo, or keep checking back.
 
 ## Current Modules
 
-![DTMF](docs/images/dtmf.png)![Noise](docs/images/noise.png)![CVSeq](docs/images/cvseq.png)![Not](docs/images/not.png)
+![Modules](docs/images/all.png)
 
 * DTMF - plays DTMF tones as notes
 * Noise - plays white or pink noise
