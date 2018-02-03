@@ -9,17 +9,17 @@ extern Plugin *plugin;
 ////////////////////
 
 struct SidViciousWidget : ModuleWidget {
-  SidViciousWidget( );
+  SidViciousWidget();
 };
 
 struct DTMFWidget : ModuleWidget {
-  DTMFWidget( );
+  DTMFWidget();
 };
 
 struct NoiseWidget : ModuleWidget {
-  NoiseWidget( );
+  NoiseWidget();
 };
 
 struct CVSeqWidget : ModuleWidget {
-  CVSeqWidget( );
+  CVSeqWidget();
 };

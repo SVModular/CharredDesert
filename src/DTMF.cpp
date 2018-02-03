@@ -1,8 +1,8 @@
 #include <cstdint>
 
-#include "CharredDesert.hpp"
 #include "../deps/SynthDevKit/src/CV.hpp"
 #include "../deps/SynthDevKit/src/DTMF.hpp"
+#include "CharredDesert.hpp"
 #include "components/custom.hpp"
 
 struct DTMFModule : Module {
@@ -11,21 +11,23 @@ struct DTMFModule : Module {
   enum OutputIds { AUDIO_OUTPUT, NUM_OUTPUTS };
   enum LightIds { ON_LED, NUM_LIGHTS };
 
-  DTMFModule( ) : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
+  DTMFModule() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
     cv = new SynthDevKit::CV(1.7f);
     dtmf = new SynthDevKit::DTMF(44100);
   }
 
-  void step( ) override;
+  void step() override;
 
-  char getTone (float);
+  char getTone(float);
   SynthDevKit::CV *cv;
   SynthDevKit::DTMF *dtmf;
-  float notes[16] = { 0, 0.08, 0.17, 0.25, 0.33, 0.42, 0.5, 0.58, 0.67, 0.75, 0.83, 0.92, 1.0, 1.08, 1.17, 1.25 };
-  char tones[16] = { '1', '2', '3', 'A', '4', '5', '6', 'B', '7', '8', '9', 'C', '*', '0', '#', 'D' };
+  float notes[16] = {0,    0.08, 0.17, 0.25, 0.33, 0.42, 0.5,  0.58,
+                     0.67, 0.75, 0.83, 0.92, 1.0,  1.08, 1.17, 1.25};
+  char tones[16] = {'1', '2', '3', 'A', '4', '5', '6', 'B',
+                    '7', '8', '9', 'C', '*', '0', '#', 'D'};
 };
 
-char DTMFModule::getTone (float current) {
+char DTMFModule::getTone(float current) {
   for (int i = 0; i < 12; i++) {
     if ((notes[i] - 0.02) <= current && (notes[i] + 0.02) >= current) {
       return tones[i];
@@ -35,7 +37,7 @@ char DTMFModule::getTone (float current) {
   return ' ';
 }
 
-void DTMFModule::step( ) {
+void DTMFModule::step() {
   float cv_in = inputs[CV_INPUT].value;
   float voct_in = inputs[VOCT_INPUT].value;
 
@@ -62,13 +64,13 @@ void DTMFModule::step( ) {
   }
 }
 
-DTMFWidget::DTMFWidget( ) {
-  DTMFModule *module = new DTMFModule( );
+DTMFWidget::DTMFWidget() {
+  DTMFModule *module = new DTMFModule();
   setModule(module);
   box.size = Vec(3 * RACK_GRID_WIDTH, RACK_GRID_HEIGHT);
 
   {
-    SVGPanel *panel = new SVGPanel( );
+    SVGPanel *panel = new SVGPanel();
     panel->box.size = box.size;
     panel->setBackground(SVG::load(assetPlugin(plugin, "res/DTMF.svg")));
     addChild(panel);
@@ -78,13 +80,9 @@ DTMFWidget::DTMFWidget( ) {
   addChild(createScrew<ScrewSilver>(
       Vec(RACK_GRID_WIDTH, RACK_GRID_HEIGHT - RACK_GRID_WIDTH)));
 
-  addInput(
-      createInput<Jack>(Vec(10, 45), module, DTMFModule::CV_INPUT));
-  addInput(
-      createInput<Jack>(Vec(10, 100), module, DTMFModule::VOCT_INPUT));
-  addOutput(
-      createOutput<Jack>(Vec(10, 165), module, DTMFModule::AUDIO_OUTPUT));
-  addChild(
-      createLight<MediumLight<RedLight>>(Vec(18, 220), module, DTMFModule::ON_LED));
-
+  addInput(createInput<Jack>(Vec(10, 45), module, DTMFModule::CV_INPUT));
+  addInput(createInput<Jack>(Vec(10, 100), module, DTMFModule::VOCT_INPUT));
+  addOutput(createOutput<Jack>(Vec(10, 165), module, DTMFModule::AUDIO_OUTPUT));
+  addChild(createLight<MediumLight<RedLight>>(Vec(18, 220), module,
+                                              DTMFModule::ON_LED));
 }

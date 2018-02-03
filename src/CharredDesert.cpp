@@ -11,12 +11,14 @@ void init(rack::Plugin *p) {
   p->version = TOSTRING(VERSION);
 #endif
   p->website = "https://github.com/JerrySievert/CharredDesert";
-  p->manual  = "https://github.com/JerrySievert/CharredDesert/blob/master/README.md";
+  p->manual =
+      "https://github.com/JerrySievert/CharredDesert/blob/master/README.md";
 
   // For each module, specify the ModuleWidget subclass, manufacturer slug (for
   // saving in patches), manufacturer human-readable name, module slug, and
   // module name
   p->addModel(createModel<DTMFWidget>("CharredDesert", "DTMF", "DTMF"));
   p->addModel(createModel<NoiseWidget>("CharredDesert", "Noise", "Noise"));
-  p->addModel(createModel<CVSeqWidget>("CharredDesert", "CV Sequencer", "CV Sequencer"));
+  p->addModel(createModel<CVSeqWidget>("CharredDesert", "CV Sequencer",
+                                       "CV Sequencer"));
 }
