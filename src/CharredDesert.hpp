@@ -19,3 +19,7 @@ struct DTMFWidget : ModuleWidget {
 struct NoiseWidget : ModuleWidget {
   NoiseWidget( );
 };
+
+struct CVSeqWidget : ModuleWidget {
+  CVSeqWidget( );
+};

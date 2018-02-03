@@ -18,4 +18,5 @@ void init(rack::Plugin *p) {
   // module name
   p->addModel(createModel<DTMFWidget>("CharredDesert", "DTMF", "DTMF"));
   p->addModel(createModel<NoiseWidget>("CharredDesert", "Noise", "Noise"));
+  p->addModel(createModel<CVSeqWidget>("CharredDesert", "CV Sequencer", "CV Sequencer"));
 }

@@ -5,6 +5,7 @@
 #include "../deps/SynthDevKit/src/CV.hpp"
 #include "../deps/SynthDevKit/src/WhiteNoise.hpp"
 #include "../deps/SynthDevKit/src/PinkNoise.hpp"
+#include "components/custom.hpp"
 
 struct NoiseModule : Module {
   enum ParamIds { NOISE_SWITCH, NUM_PARAMS };
@@ -61,10 +62,10 @@ NoiseWidget::NoiseWidget( ) {
       Vec(RACK_GRID_WIDTH, RACK_GRID_HEIGHT - RACK_GRID_WIDTH)));
 
   addInput(
-      createInput<PJ301MPort>(Vec(10, 45), module, NoiseModule::CV_INPUT));
-  addParam(createParam<NKK>(Vec(7, 100), module, NoiseModule::NOISE_SWITCH, 0.0, 1.0, 1.0));
+      createInput<Jack>(Vec(10, 45), module, NoiseModule::CV_INPUT));
+  addParam(createParam<CKSS>(Vec(15, 112), module, NoiseModule::NOISE_SWITCH, 0.0, 1.0, 1.0));
   addOutput(
-      createOutput<PJ301MPort>(Vec(10, 165), module, NoiseModule::AUDIO_OUTPUT));
+      createOutput<Jack>(Vec(10, 165), module, NoiseModule::AUDIO_OUTPUT));
   addChild(
       createLight<MediumLight<RedLight>>(Vec(18, 220), module, NoiseModule::ON_LED));
 

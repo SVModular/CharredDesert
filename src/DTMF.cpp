@@ -3,6 +3,7 @@
 #include "CharredDesert.hpp"
 #include "../deps/SynthDevKit/src/CV.hpp"
 #include "../deps/SynthDevKit/src/DTMF.hpp"
+#include "components/custom.hpp"
 
 struct DTMFModule : Module {
   enum ParamIds { NUM_PARAMS };
@@ -78,11 +79,11 @@ DTMFWidget::DTMFWidget( ) {
       Vec(RACK_GRID_WIDTH, RACK_GRID_HEIGHT - RACK_GRID_WIDTH)));
 
   addInput(
-      createInput<PJ301MPort>(Vec(10, 45), module, DTMFModule::CV_INPUT));
+      createInput<Jack>(Vec(10, 45), module, DTMFModule::CV_INPUT));
   addInput(
-      createInput<PJ301MPort>(Vec(10, 100), module, DTMFModule::VOCT_INPUT));
+      createInput<Jack>(Vec(10, 100), module, DTMFModule::VOCT_INPUT));
   addOutput(
-      createOutput<PJ301MPort>(Vec(10, 165), module, DTMFModule::AUDIO_OUTPUT));
+      createOutput<Jack>(Vec(10, 165), module, DTMFModule::AUDIO_OUTPUT));
   addChild(
       createLight<MediumLight<RedLight>>(Vec(18, 220), module, DTMFModule::ON_LED));
 
