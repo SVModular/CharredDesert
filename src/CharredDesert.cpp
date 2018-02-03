@@ -12,7 +12,7 @@ void init(rack::Plugin *p) {
 #endif
   p->website = "https://github.com/JerrySievert/CharredDesert";
   p->manual =
-      "https://github.com/JerrySievert/CharredDesert/blob/master/README.md";
+      "https://github.com/JerrySievert/CharredDesert/blob/master/docs/README.md";
 
   // For each module, specify the ModuleWidget subclass, manufacturer slug (for
   // saving in patches), manufacturer human-readable name, module slug, and
@@ -21,4 +21,6 @@ void init(rack::Plugin *p) {
   p->addModel(createModel<NoiseWidget>("CharredDesert", "Noise", "Noise"));
   p->addModel(createModel<CVSeqWidget>("CharredDesert", "CV Sequencer",
                                        "CV Sequencer"));
+  p->addModel(createModel<NotWidget>("CharredDesert", "Not", "Not"));
+
 }

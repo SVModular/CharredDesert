@@ -23,3 +23,7 @@ struct NoiseWidget : ModuleWidget {
 struct CVSeqWidget : ModuleWidget {
   CVSeqWidget();
 };
+
+struct NotWidget : ModuleWidget {
+  NotWidget();
+};
