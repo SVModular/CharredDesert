@@ -17,3 +17,5 @@ star the repo, or keep checking back.
 * Noise - plays white or pink noise
 * CVSeq - sends selectable CV values ("voltages") in order
 * Not - switchable to invert either waveforms (-5 to 5) or CV (0 to 10)
+
+For more information, see the [documentation](docs/README.md).
