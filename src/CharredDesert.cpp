@@ -22,5 +22,6 @@ void init(rack::Plugin *p) {
   p->addModel(createModel<CVSeqWidget>("CharredDesert", "CV Sequencer",
                                        "CV Sequencer"));
   p->addModel(createModel<NotWidget>("CharredDesert", "Not", "Not"));
-
+  p->addModel(createModel<PanWidget>("CharredDesert", "Pan", "Pan"));
+  p->addModel(createModel<ShiftWidget>("CharredDesert", "Shift", "Shift"));
 }

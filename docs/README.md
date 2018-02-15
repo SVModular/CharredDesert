@@ -74,3 +74,36 @@ Outputs the opposite of the input.
 ### Output
 
 * Out - outputs on/off (0 or 1.7) or inverted (-5 to 5) value of the input
+
+## Pan
+
+Pans input between two outputs based on a waveform coming in via the `pan`
+input
+
+![Pan](images/pan.png)
+
+### Input
+
+* Input - waveform or CV to be panned between two outputs
+* Pan - waveform (-5 to 5) where -5 sends 100% to first output, and 5 sends 100% to second output, with values in between
+
+### Output
+
+* Output 1 - output biased from negative pan
+* Output 2 - output biased from positive pan
+
+## Shift
+
+Shifts input by -5 to +5, controllable by a knob
+
+![Shift](images/shift.png)
+
+### Input
+
+* Input - waveform or CV to be shifted
+* Switch - clipped output (-5 to 5) or natural output
+* Knob - amount to shift, between -5 to +5
+
+### Output
+
+* Output - waveform or CV that has been shifted

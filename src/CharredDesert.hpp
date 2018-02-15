@@ -27,3 +27,11 @@ struct CVSeqWidget : ModuleWidget {
 struct NotWidget : ModuleWidget {
   NotWidget();
 };
+
+struct PanWidget : ModuleWidget {
+  PanWidget();
+};
+
+struct ShiftWidget : ModuleWidget {
+  ShiftWidget();
+};
