@@ -21,6 +21,8 @@ star the repo, or keep checking back.
 
 For more information, see the [documentation](docs/README.md).
 
+Want to help fund more development?  [Donate now](https://paypal.me/JerrySievert)!
+
 ## Building
 
 ```
