@@ -1,5 +1,5 @@
 SLUG = CharredDesert
-VERSION = 0.1.0
+VERSION = 0.5.0
 
 # FLAGS will be passed to both the C and C++ compiler
 FLAGS +=
