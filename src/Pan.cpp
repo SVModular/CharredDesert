@@ -19,16 +19,18 @@ void PanModule::step() {
   float pan_in = inputs[PAN_INPUT].value;
 
   // figure out the percentages to apply
-  float apply1 = (clampf(pan_in, -5.0f, 5.0f) + 5.0f) * 10;
+  float apply1 = (clamp(pan_in, -5.0f, 5.0f) + 5.0f) * 10;
   float apply2 = 100.0f - apply1;
 
   outputs[AUDIO_OUTPUT1].value = ((audio_in * apply1) / 100.0f);
   outputs[AUDIO_OUTPUT2].value = ((audio_in * apply2) / 100.0f);
 }
 
-PanWidget::PanWidget() {
-  PanModule *module = new PanModule();
-  setModule(module);
+struct PanWidget : ModuleWidget {
+  PanWidget(PanModule *module);
+};
+
+PanWidget::PanWidget(PanModule *module) : ModuleWidget(module) {
   box.size = Vec(3 * RACK_GRID_WIDTH, RACK_GRID_HEIGHT);
 
   {
@@ -38,12 +40,14 @@ PanWidget::PanWidget() {
     addChild(panel);
   }
 
-  addChild(createScrew<ScrewSilver>(Vec(RACK_GRID_WIDTH, 0)));
-  addChild(createScrew<ScrewSilver>(
+  addChild(Widget::create<ScrewSilver>(Vec(RACK_GRID_WIDTH, 0)));
+  addChild(Widget::create<ScrewSilver>(
       Vec(RACK_GRID_WIDTH, RACK_GRID_HEIGHT - RACK_GRID_WIDTH)));
 
-  addInput(createInput<Jack>(Vec(10, 45), module, PanModule::AUDIO_INPUT));
-  addInput(createInput<Jack>(Vec(10, 100), module, PanModule::PAN_INPUT));
-  addOutput(createOutput<Jack>(Vec(10, 165), module, PanModule::AUDIO_OUTPUT1));
-  addOutput(createOutput<Jack>(Vec(10, 230), module, PanModule::AUDIO_OUTPUT2));
+  addInput(Port::create<Jack>(Vec(10, 45), Port::INPUT, module, PanModule::AUDIO_INPUT));
+  addInput(Port::create<Jack>(Vec(10, 100), Port::INPUT, module, PanModule::PAN_INPUT));
+  addOutput(Port::create<Jack>(Vec(10, 165), Port::OUTPUT, module, PanModule::AUDIO_OUTPUT1));
+  addOutput(Port::create<Jack>(Vec(10, 230), Port::OUTPUT, module, PanModule::AUDIO_OUTPUT2));
 }
+
+Model *modelPan = Model::create<PanModule, PanWidget>("CharredDesert", "Pan", "Pan");
