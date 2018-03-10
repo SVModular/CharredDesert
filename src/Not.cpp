@@ -29,9 +29,11 @@ void NotModule::step() {
   }
 }
 
-NotWidget::NotWidget() {
-  NotModule *module = new NotModule();
-  setModule(module);
+struct NotWidget : ModuleWidget {
+  NotWidget(NotModule *module);
+};
+
+NotWidget::NotWidget(NotModule *module) : ModuleWidget(module) {
   box.size = Vec(3 * RACK_GRID_WIDTH, RACK_GRID_HEIGHT);
 
   {
@@ -41,13 +43,15 @@ NotWidget::NotWidget() {
     addChild(panel);
   }
 
-  addChild(createScrew<ScrewSilver>(Vec(RACK_GRID_WIDTH, 0)));
-  addChild(createScrew<ScrewSilver>(
+  addChild(Widget::create<ScrewSilver>(Vec(RACK_GRID_WIDTH, 0)));
+  addChild(Widget::create<ScrewSilver>(
       Vec(RACK_GRID_WIDTH, RACK_GRID_HEIGHT - RACK_GRID_WIDTH)));
 
-  addInput(createInput<Jack>(Vec(10, 45), module, NotModule::INPUT));
-  addParam(createParam<CKSS>(Vec(15, 112), module, NotModule::SWITCH,
+  addInput(Port::create<Jack>(Vec(10, 45), Port::INPUT, module, NotModule::INPUT));
+  addParam(ParamWidget::create<CKSS>(Vec(15, 112), module, NotModule::SWITCH,
                              0.0, 1.0, 1.0));
   addOutput(
-      createOutput<Jack>(Vec(10, 165), module, NotModule::OUTPUT));
+      Port::create<Jack>(Vec(10, 165), Port::OUTPUT, module, NotModule::OUTPUT));
 }
+
+Model *modelNot = Model::create<NotModule, NotWidget>("CharredDesert", "Not", "Not");

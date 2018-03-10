@@ -1,5 +1,5 @@
 SLUG = CharredDesert
-VERSION = 0.5.0
+VERSION = 0.6.0dev
 
 # FLAGS will be passed to both the C and C++ compiler
 FLAGS +=
@@ -18,4 +18,5 @@ SOURCES = $(wildcard src/*.cpp) $(wildcard deps/SynthDevKit/src/*.cpp) $(wildcar
 DISTRIBUTABLES += $(wildcard LICENSE*) res
 
 # Must include the VCV plugin Makefile framework
-include ../../plugin.mk
+RACK_DIR ?= ../..
+include $(RACK_DIR)/plugin.mk
