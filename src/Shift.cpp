@@ -21,15 +21,17 @@ void ShiftModule::step() {
   float shift = params[KNOB].value;
 
   if (params[SWITCH].value) {
-    outputs[OUTPUT].value = clampf(in + shift, -5.0f, 5.0f);
+    outputs[OUTPUT].value = clamp(in + shift, -5.0f, 5.0f);
   } else {
     outputs[OUTPUT].value = in + shift;
   }
 }
 
-ShiftWidget::ShiftWidget() {
-  ShiftModule *module = new ShiftModule();
-  setModule(module);
+struct ShiftWidget : ModuleWidget {
+  ShiftWidget(ShiftModule *module);
+};
+
+ShiftWidget::ShiftWidget(ShiftModule *module) : ModuleWidget(module) {
   box.size = Vec(3 * RACK_GRID_WIDTH, RACK_GRID_HEIGHT);
 
   {
@@ -39,15 +41,17 @@ ShiftWidget::ShiftWidget() {
     addChild(panel);
   }
 
-  addChild(createScrew<ScrewSilver>(Vec(RACK_GRID_WIDTH, 0)));
-  addChild(createScrew<ScrewSilver>(
+  addChild(Widget::create<ScrewSilver>(Vec(RACK_GRID_WIDTH, 0)));
+  addChild(Widget::create<ScrewSilver>(
       Vec(RACK_GRID_WIDTH, RACK_GRID_HEIGHT - RACK_GRID_WIDTH)));
 
-  addInput(createInput<Jack>(Vec(10, 45), module, ShiftModule::INPUT));
-  addParam(createParam<CKSS>(Vec(15, 112), module, ShiftModule::SWITCH,
+  addInput(Port::create<Jack>(Vec(10, 45), Port::INPUT, module, ShiftModule::INPUT));
+  addParam(ParamWidget::create<CKSS>(Vec(15, 112), module, ShiftModule::SWITCH,
                              0.0f, 1.0f, 0.0f));
-  addParam(createParam<Davies1900hRedKnob>(Vec(5, 165), module,
+  addParam(ParamWidget::create<Davies1900hRedKnob>(Vec(5, 165), module,
                                           ShiftModule::KNOB, -5.0f, 5.0f, 0.0f));
   addOutput(
-      createOutput<Jack>(Vec(10, 230), module, ShiftModule::OUTPUT));
+      Port::create<Jack>(Vec(10, 230), Port::OUTPUT, module, ShiftModule::OUTPUT));
 }
+
+Model *modelShift = Model::create<ShiftModule, ShiftWidget>("CharredDesert", "Shift", "Shift");

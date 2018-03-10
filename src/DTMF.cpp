@@ -64,9 +64,11 @@ void DTMFModule::step() {
   }
 }
 
-DTMFWidget::DTMFWidget() {
-  DTMFModule *module = new DTMFModule();
-  setModule(module);
+struct DTMFWidget : ModuleWidget {
+  DTMFWidget(DTMFModule *module);
+};
+
+DTMFWidget::DTMFWidget(DTMFModule *module) : ModuleWidget(module) {
   box.size = Vec(3 * RACK_GRID_WIDTH, RACK_GRID_HEIGHT);
 
   {
@@ -76,13 +78,15 @@ DTMFWidget::DTMFWidget() {
     addChild(panel);
   }
 
-  addChild(createScrew<ScrewSilver>(Vec(RACK_GRID_WIDTH, 0)));
-  addChild(createScrew<ScrewSilver>(
+  addChild(Widget::create<ScrewSilver>(Vec(RACK_GRID_WIDTH, 0)));
+  addChild(Widget::create<ScrewSilver>(
       Vec(RACK_GRID_WIDTH, RACK_GRID_HEIGHT - RACK_GRID_WIDTH)));
 
-  addInput(createInput<Jack>(Vec(10, 45), module, DTMFModule::CV_INPUT));
-  addInput(createInput<Jack>(Vec(10, 100), module, DTMFModule::VOCT_INPUT));
-  addOutput(createOutput<Jack>(Vec(10, 165), module, DTMFModule::AUDIO_OUTPUT));
-  addChild(createLight<MediumLight<RedLight>>(Vec(18, 220), module,
+  addInput(Port::create<Jack>(Vec(10, 45), Port::INPUT, module, DTMFModule::CV_INPUT));
+  addInput(Port::create<Jack>(Vec(10, 100), Port::INPUT, module, DTMFModule::VOCT_INPUT));
+  addOutput(Port::create<Jack>(Vec(10, 165), Port::OUTPUT, module, DTMFModule::AUDIO_OUTPUT));
+  addChild(ModuleLightWidget::create<MediumLight<RedLight>>(Vec(18, 220), module,
                                               DTMFModule::ON_LED));
 }
+
+Model *modelDTMF = Model::create<DTMFModule, DTMFWidget>("CharredDesert", "DTMF", "DTMF");

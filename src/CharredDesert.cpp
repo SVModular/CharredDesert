@@ -6,22 +6,16 @@ Plugin *plugin;
 void init(rack::Plugin *p) {
   plugin = p;
   // This is the unique identifier for your plugin
-  p->slug = "CharredDesert";
-#ifdef VERSION
+  p->slug = TOSTRING(SLUG);
   p->version = TOSTRING(VERSION);
-#endif
   p->website = "https://github.com/JerrySievert/CharredDesert";
   p->manual =
       "https://github.com/JerrySievert/CharredDesert/blob/master/docs/README.md";
 
-  // For each module, specify the ModuleWidget subclass, manufacturer slug (for
-  // saving in patches), manufacturer human-readable name, module slug, and
-  // module name
-  p->addModel(createModel<DTMFWidget>("CharredDesert", "DTMF", "DTMF"));
-  p->addModel(createModel<NoiseWidget>("CharredDesert", "Noise", "Noise"));
-  p->addModel(createModel<CVSeqWidget>("CharredDesert", "CV Sequencer",
-                                       "CV Sequencer"));
-  p->addModel(createModel<NotWidget>("CharredDesert", "Not", "Not"));
-  p->addModel(createModel<PanWidget>("CharredDesert", "Pan", "Pan"));
-  p->addModel(createModel<ShiftWidget>("CharredDesert", "Shift", "Shift"));
+  p->addModel(modelDTMF);
+  p->addModel(modelNoise);
+  p->addModel(modelCVSeq);
+  p->addModel(modelNot);
+  p->addModel(modelPan);
+  p->addModel(modelShift);
 }
