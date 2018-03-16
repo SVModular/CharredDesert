@@ -11,11 +11,11 @@ CXXFLAGS +=
 LDFLAGS +=
 
 # Add .cpp and .c files to the build
-SOURCES = $(wildcard src/*.cpp) $(wildcard deps/SynthDevKit/src/*.cpp) $(wildcard deps/Biquad/*.cpp)
+SOURCES = $(wildcard src/*.cpp) $(wildcard deps/SynthDevKit/src/*.cpp)
 
 # Add files to the ZIP package when running `make dist`
 # The compiled plugin is automatically added.
-DISTRIBUTABLES += $(wildcard LICENSE*) res
+DISTRIBUTABLES += $(wildcard LICENSE*) res deps/rack-components/res
 
 # Must include the VCV plugin Makefile framework
 RACK_DIR ?= ../..

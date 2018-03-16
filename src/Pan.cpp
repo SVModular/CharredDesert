@@ -1,7 +1,7 @@
 #include <cstdint>
 
 #include "CharredDesert.hpp"
-#include "components/custom.hpp"
+#include "../deps/rack-components/jacks.hpp"
 
 struct PanModule : Module {
   enum ParamIds { NUM_PARAMS };
@@ -44,10 +44,10 @@ PanWidget::PanWidget(PanModule *module) : ModuleWidget(module) {
   addChild(Widget::create<ScrewSilver>(
       Vec(RACK_GRID_WIDTH, RACK_GRID_HEIGHT - RACK_GRID_WIDTH)));
 
-  addInput(Port::create<Jack>(Vec(10, 45), Port::INPUT, module, PanModule::AUDIO_INPUT));
-  addInput(Port::create<Jack>(Vec(10, 100), Port::INPUT, module, PanModule::PAN_INPUT));
-  addOutput(Port::create<Jack>(Vec(10, 165), Port::OUTPUT, module, PanModule::AUDIO_OUTPUT1));
-  addOutput(Port::create<Jack>(Vec(10, 230), Port::OUTPUT, module, PanModule::AUDIO_OUTPUT2));
+  addInput(Port::create<RCJackSmallRed>(Vec(10, 45), Port::INPUT, module, PanModule::AUDIO_INPUT));
+  addInput(Port::create<RCJackSmallRed>(Vec(10, 100), Port::INPUT, module, PanModule::PAN_INPUT));
+  addOutput(Port::create<RCJackSmallRed>(Vec(10, 165), Port::OUTPUT, module, PanModule::AUDIO_OUTPUT1));
+  addOutput(Port::create<RCJackSmallRed>(Vec(10, 230), Port::OUTPUT, module, PanModule::AUDIO_OUTPUT2));
 }
 
 Model *modelPan = Model::create<PanModule, PanWidget>("CharredDesert", "Pan", "Pan");

@@ -2,8 +2,8 @@
 
 #include "../deps/SynthDevKit/src/CV.hpp"
 #include "CharredDesert.hpp"
-#include "components/custom.hpp"
-#include "rack.hpp"
+#include "../deps/rack-components/knobs.hpp"
+#include "../deps/rack-components/jacks.hpp"
 
 struct CVSeqModule : Module {
   enum ParamIds { KNOB1, KNOB2, KNOB3, KNOB4, NUM_PARAMS };
@@ -64,16 +64,16 @@ CVSeqWidget::CVSeqWidget(CVSeqModule *module) : ModuleWidget(module) {
   addChild(Widget::create<ScrewSilver>(
       Vec(RACK_GRID_WIDTH, RACK_GRID_HEIGHT - RACK_GRID_WIDTH)));
 
-  addInput(Port::create<Jack>(Vec(0, 24), Port::INPUT, module, CVSeqModule::CV_INPUT));
-  addOutput(Port::create<Jack>(Vec(20, 24), Port::OUTPUT, module, CVSeqModule::CV_OUTPUT));
+  addInput(Port::create<RCJackSmallRed>(Vec(0, 24), Port::INPUT, module, CVSeqModule::CV_INPUT));
+  addOutput(Port::create<RCJackSmallRed>(Vec(20, 24), Port::OUTPUT, module, CVSeqModule::CV_OUTPUT));
 
-  addParam(ParamWidget::create<Davies1900hRedKnob>(Vec(5, 80), module,
+  addParam(ParamWidget::create<RCKnobRedLarge>(Vec(5, 80), module,
                                            CVSeqModule::KNOB1, 0.0, 10.0, 0.0));
-  addParam(ParamWidget::create<Davies1900hRedKnob>(Vec(5, 130), module,
+  addParam(ParamWidget::create<RCKnobRedLarge>(Vec(5, 130), module,
                                            CVSeqModule::KNOB2, 0.0, 10.0, 0.0));
-  addParam(ParamWidget::create<Davies1900hRedKnob>(Vec(5, 180), module,
+  addParam(ParamWidget::create<RCKnobRedLarge>(Vec(5, 180), module,
                                            CVSeqModule::KNOB3, 0.0, 10.0, 0.0));
-  addParam(ParamWidget::create<Davies1900hRedKnob>(Vec(5, 230), module,
+  addParam(ParamWidget::create<RCKnobRedLarge>(Vec(5, 230), module,
                                            CVSeqModule::KNOB4, 0.0, 10.0, 0.0));
   addChild(ModuleLightWidget::create<MediumLight<RedLight>>(Vec(33, 114), module,
                                               CVSeqModule::LED1));

@@ -3,7 +3,7 @@
 #include "../deps/SynthDevKit/src/CV.hpp"
 #include "../deps/SynthDevKit/src/DTMF.hpp"
 #include "CharredDesert.hpp"
-#include "components/custom.hpp"
+#include "../deps/rack-components/jacks.hpp"
 
 struct DTMFModule : Module {
   enum ParamIds { NUM_PARAMS };
@@ -82,9 +82,9 @@ DTMFWidget::DTMFWidget(DTMFModule *module) : ModuleWidget(module) {
   addChild(Widget::create<ScrewSilver>(
       Vec(RACK_GRID_WIDTH, RACK_GRID_HEIGHT - RACK_GRID_WIDTH)));
 
-  addInput(Port::create<Jack>(Vec(10, 45), Port::INPUT, module, DTMFModule::CV_INPUT));
-  addInput(Port::create<Jack>(Vec(10, 100), Port::INPUT, module, DTMFModule::VOCT_INPUT));
-  addOutput(Port::create<Jack>(Vec(10, 165), Port::OUTPUT, module, DTMFModule::AUDIO_OUTPUT));
+  addInput(Port::create<RCJackSmallRed>(Vec(10, 45), Port::INPUT, module, DTMFModule::CV_INPUT));
+  addInput(Port::create<RCJackSmallRed>(Vec(10, 100), Port::INPUT, module, DTMFModule::VOCT_INPUT));
+  addOutput(Port::create<RCJackSmallRed>(Vec(10, 165), Port::OUTPUT, module, DTMFModule::AUDIO_OUTPUT));
   addChild(ModuleLightWidget::create<MediumLight<RedLight>>(Vec(18, 220), module,
                                               DTMFModule::ON_LED));
 }

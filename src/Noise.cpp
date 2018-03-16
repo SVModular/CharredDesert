@@ -4,8 +4,7 @@
 #include "../deps/SynthDevKit/src/PinkNoise.hpp"
 #include "../deps/SynthDevKit/src/WhiteNoise.hpp"
 #include "CharredDesert.hpp"
-#include "components/custom.hpp"
-#include "rack.hpp"
+#include "../deps/rack-components/jacks.hpp"
 
 struct NoiseModule : Module {
   enum ParamIds { NOISE_SWITCH, NUM_PARAMS };
@@ -33,9 +32,9 @@ void NoiseModule::step() {
 
   if (cv->isHigh()) {
     if (params[NOISE_SWITCH].value) {
-      outputs[AUDIO_OUTPUT].value = pn->stepValue();
-    } else {
       outputs[AUDIO_OUTPUT].value = wn->stepValue();
+    } else {
+      outputs[AUDIO_OUTPUT].value = pn->stepValue();
     }
 
     lights[ON_LED].value = 1;
@@ -63,11 +62,11 @@ NoiseWidget::NoiseWidget(NoiseModule *module) : ModuleWidget(module) {
   addChild(Widget::create<ScrewSilver>(
       Vec(RACK_GRID_WIDTH, RACK_GRID_HEIGHT - RACK_GRID_WIDTH)));
 
-  addInput(Port::create<Jack>(Vec(10, 45), Port::INPUT, module, NoiseModule::CV_INPUT));
+  addInput(Port::create<RCJackSmallRed>(Vec(10, 45), Port::INPUT, module, NoiseModule::CV_INPUT));
   addParam(ParamWidget::create<CKSS>(Vec(15, 112), module, NoiseModule::NOISE_SWITCH,
                              0.0, 1.0, 1.0));
   addOutput(
-      Port::create<Jack>(Vec(10, 165), Port::OUTPUT, module, NoiseModule::AUDIO_OUTPUT));
+      Port::create<RCJackSmallRed>(Vec(10, 165), Port::OUTPUT, module, NoiseModule::AUDIO_OUTPUT));
   addChild(ModuleLightWidget::create<MediumLight<RedLight>>(Vec(18, 220), module,
                                               NoiseModule::ON_LED));
 }
