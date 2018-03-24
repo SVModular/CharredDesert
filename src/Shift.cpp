@@ -54,4 +54,4 @@ ShiftWidget::ShiftWidget(ShiftModule *module) : ModuleWidget(module) {
       Port::create<RCJackSmallRed>(Vec(10, 230), Port::OUTPUT, module, ShiftModule::OUTPUT));
 }
 
-Model *modelShift = Model::create<ShiftModule, ShiftWidget>("CharredDesert", "Shift", "Shift");
+Model *modelShift = Model::create<ShiftModule, ShiftWidget>("CharredDesert", "Shift", "Shift", LOGIC_TAG);

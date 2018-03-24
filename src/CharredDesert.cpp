@@ -18,4 +18,5 @@ void init(rack::Plugin *p) {
   p->addModel(modelNot);
   p->addModel(modelPan);
   p->addModel(modelShift);
+  p->addModel(modelOscar);
 }

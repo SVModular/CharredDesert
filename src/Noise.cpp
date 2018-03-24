@@ -71,4 +71,4 @@ NoiseWidget::NoiseWidget(NoiseModule *module) : ModuleWidget(module) {
                                               NoiseModule::ON_LED));
 }
 
-Model *modelNoise = Model::create<NoiseModule, NoiseWidget>("CharredDesert", "Noise", "Noise");
+Model *modelNoise = Model::create<NoiseModule, NoiseWidget>("CharredDesert", "Noise", "Noise", NOISE_TAG);

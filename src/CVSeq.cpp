@@ -85,4 +85,4 @@ CVSeqWidget::CVSeqWidget(CVSeqModule *module) : ModuleWidget(module) {
                                               CVSeqModule::LED4));
 }
 
-Model *modelCVSeq = Model::create<CVSeqModule, CVSeqWidget>("CharredDesert", "CV Sequencer", "CV Sequencer");
+Model *modelCVSeq = Model::create<CVSeqModule, CVSeqWidget>("CharredDesert", "CV Sequencer", "CV Sequencer", LOGIC_TAG, SEQUENCER_TAG, LOGIC_TAG);

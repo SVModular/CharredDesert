@@ -50,4 +50,4 @@ PanWidget::PanWidget(PanModule *module) : ModuleWidget(module) {
   addOutput(Port::create<RCJackSmallRed>(Vec(10, 230), Port::OUTPUT, module, PanModule::AUDIO_OUTPUT2));
 }
 
-Model *modelPan = Model::create<PanModule, PanWidget>("CharredDesert", "Pan", "Pan");
+Model *modelPan = Model::create<PanModule, PanWidget>("CharredDesert", "Pan", "Pan", PANNING_TAG);

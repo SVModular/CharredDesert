@@ -53,4 +53,4 @@ NotWidget::NotWidget(NotModule *module) : ModuleWidget(module) {
       Port::create<RCJackSmallRed>(Vec(10, 165), Port::OUTPUT, module, NotModule::OUTPUT));
 }
 
-Model *modelNot = Model::create<NotModule, NotWidget>("CharredDesert", "Not", "Not");
+Model *modelNot = Model::create<NotModule, NotWidget>("CharredDesert", "Not", "Not", LOGIC_TAG);

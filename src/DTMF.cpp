@@ -89,4 +89,4 @@ DTMFWidget::DTMFWidget(DTMFModule *module) : ModuleWidget(module) {
                                               DTMFModule::ON_LED));
 }
 
-Model *modelDTMF = Model::create<DTMFModule, DTMFWidget>("CharredDesert", "DTMF", "DTMF");
+Model *modelDTMF = Model::create<DTMFModule, DTMFWidget>("CharredDesert", "DTMF", "DTMF", ENVELOPE_GENERATOR_TAG);
