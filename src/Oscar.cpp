@@ -4,77 +4,7 @@
 #include "../deps/rack-components/jacks.hpp"
 #include "../deps/rack-components/knobs.hpp"
 #include "CharredDesert.hpp"
-#include "dsp/digital.hpp"
-
-struct LowFrequencyOscillator {
-  float phase = 0.0;
-  float pw = 0.5;
-  float freq = 1.0;
-  bool offset = false;
-  bool invert = false;
-  SynthDevKit::CV *cv = new SynthDevKit::CV(1.7f);
-  SchmittTrigger resetTrigger;
-  LowFrequencyOscillator() {
-  }
-  void setPitch(float pitch) {
-    pitch = fminf(pitch, 8.0);
-    freq = powf(2.0, pitch);
-  }
-  void setFrequency(float frequency) {
-    freq = frequency;
-  }
-  void setPulseWidth(float pw_) {
-    const float pwMin = 0.01;
-    pw = clamp(pw_, pwMin, 1.0f - pwMin);
-  }
-  void setReset(float reset) {
-    cv->update(reset);
-    if (cv->newTrigger()) {
-      phase = 0.0;
-    }
-  }
-  void hardReset() {
-    phase = 0.0;
-  }
-
-  void step(float dt) {
-    float deltaPhase = fminf(freq * dt, 0.5);
-    phase += deltaPhase;
-    if (phase >= 1.0)
-      phase -= 1.0;
-  }
-  float sin() {
-    if (offset)
-      return 1.0 - cosf(2 * M_PI * phase) * (invert ? -1.0 : 1.0);
-    else
-      return sinf(2 * M_PI * phase) * (invert ? -1.0 : 1.0);
-  }
-  float tri(float x) {
-    return 4.0 * fabsf(x - roundf(x));
-  }
-  float tri() {
-    if (offset)
-      return tri(invert ? phase - 0.5 : phase);
-    else
-      return -1.0 + tri(invert ? phase - 0.25 : phase - 0.75);
-  }
-  float saw(float x) {
-    return 2.0 * (x - roundf(x));
-  }
-  float saw() {
-    if (offset)
-      return invert ? 2.0 * (1.0 - phase) : 2.0 * phase;
-    else
-      return saw(phase) * (invert ? -1.0 : 1.0);
-  }
-  float sqr() {
-    float sqr = (phase < pw) ^ invert ? 1.0 : -1.0;
-    return offset ? sqr + 1.0 : sqr;
-  }
-  float progress() {
-    return phase;
-  }
-};
+#include "LFO.hpp"
 
 struct OscarModule : Module {
   enum ParamIds {
@@ -108,9 +38,10 @@ struct OscarModule : Module {
   enum LightIds { NUM_LIGHTS };
 
   OscarModule() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
+    osc = new LowFrequencyOscillator();
   }
 
-  LowFrequencyOscillator osc;
+  LowFrequencyOscillator *osc;
   void step() override;
 };
 
@@ -125,12 +56,12 @@ static float calculateMix(float input, float param) {
 void OscarModule::step() {
   float freq = inputs[FREQ_INPUT].value;
 
-  osc.setPitch(calculateFrequency(freq));
-  osc.step(engineGetSampleTime());
+  osc->setPitch(calculateFrequency(freq));
+  osc->step(engineGetSampleTime());
 
-  outputs[AUDIO_OUTPUT1].value = 5.0f * ((osc.sin() * ((10 - calculateMix(inputs[MIX_INPUT1].value, params[MIX_PARAM1].value)) / 10) + (osc.tri() * (calculateMix(inputs[MIX_INPUT1]. value, params[MIX_PARAM1].value) / 10))));
-  outputs[AUDIO_OUTPUT2].value = 5.0f * ((osc.sin() * ((10 - calculateMix(inputs[MIX_INPUT2].value, params[MIX_PARAM2].value)) / 10) + (osc.saw() * (calculateMix(inputs[MIX_INPUT2]. value, params[MIX_PARAM2].value) / 10))));
-  outputs[AUDIO_OUTPUT3].value = 5.0f * ((osc.tri() * ((10 - calculateMix(inputs[MIX_INPUT3].value, params[MIX_PARAM3].value)) / 10) + (osc.saw() * (calculateMix(inputs[MIX_INPUT3]. value, params[MIX_PARAM3].value) / 10))));
+  outputs[AUDIO_OUTPUT1].value = 5.0f * ((osc->sin() * ((10 - calculateMix(inputs[MIX_INPUT1].value, params[MIX_PARAM1].value)) / 10) + (osc->tri() * (calculateMix(inputs[MIX_INPUT1]. value, params[MIX_PARAM1].value) / 10))));
+  outputs[AUDIO_OUTPUT2].value = 5.0f * ((osc->sin() * ((10 - calculateMix(inputs[MIX_INPUT2].value, params[MIX_PARAM2].value)) / 10) + (osc->saw() * (calculateMix(inputs[MIX_INPUT2]. value, params[MIX_PARAM2].value) / 10))));
+  outputs[AUDIO_OUTPUT3].value = 5.0f * ((osc->tri() * ((10 - calculateMix(inputs[MIX_INPUT3].value, params[MIX_PARAM3].value)) / 10) + (osc->saw() * (calculateMix(inputs[MIX_INPUT3]. value, params[MIX_PARAM3].value) / 10))));
 }
 
 struct OscarWidget : ModuleWidget {
