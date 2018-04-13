@@ -1,31 +1,4 @@
-#include <cstdint>
-
-#include "CharredDesert.hpp"
-#include "../deps/rack-components/jacks.hpp"
-#include "../deps/rack-components/knobs.hpp"
-
-struct ShiftModule : Module {
-  enum ParamIds { SWITCH, KNOB, NUM_PARAMS };
-  enum InputIds { INPUT, NUM_INPUTS };
-  enum OutputIds { OUTPUT, NUM_OUTPUTS };
-  enum LightIds { NUM_LIGHTS };
-
-  ShiftModule() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) { }
-
-  void step() override;
-};
-
-void ShiftModule::step() {
-  float in = inputs[INPUT].value;
-
-  float shift = params[KNOB].value;
-
-  if (params[SWITCH].value) {
-    outputs[OUTPUT].value = clamp(in + shift, -5.0f, 5.0f);
-  } else {
-    outputs[OUTPUT].value = in + shift;
-  }
-}
+#include "../controller/Shift.hpp"
 
 struct ShiftWidget : ModuleWidget {
   ShiftWidget(ShiftModule *module);

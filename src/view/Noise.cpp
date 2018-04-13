@@ -1,48 +1,4 @@
-#include <cstdint>
-
-#include "../deps/SynthDevKit/src/CV.hpp"
-#include "../deps/SynthDevKit/src/PinkNoise.hpp"
-#include "../deps/SynthDevKit/src/WhiteNoise.hpp"
-#include "CharredDesert.hpp"
-#include "../deps/rack-components/jacks.hpp"
-
-struct NoiseModule : Module {
-  enum ParamIds { NOISE_SWITCH, NUM_PARAMS };
-  enum InputIds { CV_INPUT, NUM_INPUTS };
-  enum OutputIds { AUDIO_OUTPUT, NUM_OUTPUTS };
-  enum LightIds { ON_LED, NUM_LIGHTS };
-
-  NoiseModule() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
-    wn = new SynthDevKit::WhiteNoise(0);
-    pn = new SynthDevKit::PinkNoise(0);
-    cv = new SynthDevKit::CV(1.7f);
-  }
-
-  void step() override;
-
-  SynthDevKit::WhiteNoise *wn;
-  SynthDevKit::PinkNoise *pn;
-  SynthDevKit::CV *cv;
-};
-
-void NoiseModule::step() {
-  float cv_in = inputs[CV_INPUT].value;
-
-  cv->update(cv_in);
-
-  if (cv->isHigh()) {
-    if (params[NOISE_SWITCH].value) {
-      outputs[AUDIO_OUTPUT].value = wn->stepValue();
-    } else {
-      outputs[AUDIO_OUTPUT].value = pn->stepValue();
-    }
-
-    lights[ON_LED].value = 1;
-  } else {
-    outputs[AUDIO_OUTPUT].value = 0;
-    lights[ON_LED].value = 0;
-  }
-}
+#include "../controller/Noise.hpp"
 
 struct NoiseWidget : ModuleWidget {
   NoiseWidget(NoiseModule *module);

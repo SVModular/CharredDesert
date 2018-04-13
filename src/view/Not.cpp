@@ -1,32 +1,4 @@
-#include <cstdint>
-
-#include "CharredDesert.hpp"
-#include "../deps/rack-components/jacks.hpp"
-
-struct NotModule : Module {
-  enum ParamIds { SWITCH, NUM_PARAMS };
-  enum InputIds { INPUT, NUM_INPUTS };
-  enum OutputIds { OUTPUT, NUM_OUTPUTS };
-  enum LightIds { NUM_LIGHTS };
-
-  NotModule() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) { }
-
-  void step() override;
-};
-
-void NotModule::step() {
-  float in = inputs[INPUT].value;
-
-  if (params[SWITCH].value == 0) {
-    outputs[OUTPUT].value = -in;
-  } else {
-    if (in >= 1.7f) {
-      outputs[OUTPUT].value = 0;
-    } else {
-      outputs[OUTPUT].value = 1.7f;
-    }
-  }
-}
+#include "../controller/Not.hpp"
 
 struct NotWidget : ModuleWidget {
   NotWidget(NotModule *module);
