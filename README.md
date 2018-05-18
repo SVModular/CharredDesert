@@ -18,6 +18,8 @@ star the repo, or keep checking back.
 * CVSeq - sends selectable CV values ("voltages") in order
 * Not - switchable to invert either waveforms (-5 to 5) or CV (0 to 10)
 * Pan - sends waveforms from the input to two outputs, panning between
+* Oscar - simple wave form mixing
+* Oscar^2 - advanced wave form mixing
 
 For more information, see the [documentation](docs/README.md).
 

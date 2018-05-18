@@ -15,8 +15,9 @@ OscarWidget::OscarWidget(OscarModule *module) : ModuleWidget(module) {
   }
 
   addChild(Widget::create<ScrewSilver>(Vec(RACK_GRID_WIDTH, 0)));
-  addChild(Widget::create<ScrewSilver>(
-      Vec(RACK_GRID_WIDTH, RACK_GRID_HEIGHT - RACK_GRID_WIDTH)));
+  addChild(Widget::create<ScrewSilver>(Vec(box.size.x - 2 * RACK_GRID_WIDTH, 0)));
+  addChild(Widget::create<ScrewSilver>(Vec(RACK_GRID_WIDTH, RACK_GRID_HEIGHT - RACK_GRID_WIDTH)));
+  addChild(Widget::create<ScrewSilver>(Vec(box.size.x - 2 * RACK_GRID_WIDTH, RACK_GRID_HEIGHT - RACK_GRID_WIDTH)));
 
   addInput(Port::create<RCJackSmallRed>(Vec(16, 21), Port::INPUT, module,
                                         OscarModule::FREQ_INPUT));
