@@ -14,6 +14,5 @@ extern Model *modelNot;
 extern Model *modelPan;
 extern Model *modelShift;
 extern Model *modelCVSeq;
-extern Model *modelOscar;
 extern Model *modelOscar2;
 extern Model *modelEq;

@@ -3,9 +3,6 @@
 #include "../CharredDesert.hpp"
 
 #include "../../deps/SynthDevKit/src/CV.hpp"
-#include "../../deps/rack-components/jacks.hpp"
-#include "../../deps/rack-components/knobs.hpp"
-#include "../../deps/rack-components/display.hpp"
 
 #include "../LFO.hpp"
 

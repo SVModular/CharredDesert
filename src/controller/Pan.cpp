@@ -2,9 +2,11 @@
 
 PanModule::PanModule() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) { }
 
+#define ADD_CV(a, b) clamp(a.value + b.value, -5.0f, 5.0f)
+
 void PanModule::step() {
   float audio_in = inputs[AUDIO_INPUT].value;
-  float pan_in = inputs[PAN_INPUT].value;
+  float pan_in = ADD_CV(inputs[PAN_INPUT], params[PAN_PARAM]);
 
   // figure out the percentages to apply
   float apply1 = (clamp(pan_in, -5.0f, 5.0f) + 5.0f) * 10;

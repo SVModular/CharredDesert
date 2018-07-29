@@ -1,5 +1,8 @@
 #include "../controller/Not.hpp"
 
+#include "../../deps/rack-components/screws.hpp"
+#include "components.hpp"
+
 struct NotWidget : ModuleWidget {
   NotWidget(NotModule *module);
 };
@@ -14,15 +17,15 @@ NotWidget::NotWidget(NotModule *module) : ModuleWidget(module) {
     addChild(panel);
   }
 
-  addChild(Widget::create<ScrewSilver>(Vec(RACK_GRID_WIDTH, 0)));
-  addChild(Widget::create<ScrewSilver>(
-      Vec(RACK_GRID_WIDTH, RACK_GRID_HEIGHT - RACK_GRID_WIDTH)));
+  addChild(Widget::create<JLHHexScrew>(Vec(16, 1)));
+  addChild(Widget::create<JLHHexScrew>(
+      Vec(16, 366)));
 
-  addInput(Port::create<RCJackSmallRed>(Vec(10, 45), Port::INPUT, module, NotModule::INPUT));
-  addParam(ParamWidget::create<CKSS>(Vec(15, 112), module, NotModule::SWITCH,
+  addInput(Port::create<CDPort>(Vec(10, 35), Port::INPUT, module, NotModule::INPUT));
+  addParam(ParamWidget::create<CKSS>(Vec(15, 95), module, NotModule::SWITCH,
                              0.0, 1.0, 1.0));
   addOutput(
-      Port::create<RCJackSmallRed>(Vec(10, 165), Port::OUTPUT, module, NotModule::OUTPUT));
+      Port::create<CDPort>(Vec(10, 135), Port::OUTPUT, module, NotModule::OUTPUT));
 }
 
 Model *modelNot = Model::create<NotModule, NotWidget>("CharredDesert", "Not", "Not", LOGIC_TAG);

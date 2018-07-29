@@ -19,9 +19,6 @@ SYNTHDEVKIT += $(wildcard deps/SynthDevKit/src/*.cpp)
 # Views
 VIEWS += $(wildcard src/view/*.cpp)
 
-# Biquad
-BIQUAD += $(wildcard deps/Biquad/*.cpp)
-
 # Add .cpp and .c files to the build
 SOURCES += $(wildcard src/*.cpp) $(CONTROLLERS) $(VIEWS) $(SYNTHDEVKIT) $(BIQUAD)
 

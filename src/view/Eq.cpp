@@ -1,5 +1,10 @@
 #include "../controller/Eq.hpp"
 
+#include "../../deps/rack-components/jacks.hpp"
+#include "../../deps/rack-components/screws.hpp"
+#include "../../deps/rack-components/display.hpp"
+#include "components.hpp"
+
 struct EqWidget : ModuleWidget {
   EqWidget(EqModule *module);
 };
@@ -17,7 +22,7 @@ EqWidget::EqWidget(EqModule *module) : ModuleWidget(module) {
   {
 		FrequencyDisplay *frequency = new FrequencyDisplay();
 		frequency->value = &module->frequency;
-		frequency->box.pos = Vec(2, 20);
+    frequency->box.pos = Vec(1, 46);
 		frequency->box.size = Vec(40, 18);
 		addChild(frequency);
 	}
@@ -25,22 +30,21 @@ EqWidget::EqWidget(EqModule *module) : ModuleWidget(module) {
   {
 		EqTypeDisplay *type = new EqTypeDisplay();
 		type->value = &module->filterType;
-		type->box.pos = Vec(2, 52);
+    type->box.pos = Vec(1, 81);
 		type->box.size = Vec(40, 18);
 		addChild(type);
 	}
 
-  addChild(Widget::create<ScrewSilver>(Vec(RACK_GRID_WIDTH, 0)));
-  addChild(Widget::create<ScrewSilver>(Vec(box.size.x - 2 * RACK_GRID_WIDTH, 0)));
-  addChild(Widget::create<ScrewSilver>(Vec(RACK_GRID_WIDTH, RACK_GRID_HEIGHT - RACK_GRID_WIDTH)));
-  addChild(Widget::create<ScrewSilver>(Vec(box.size.x - 2 * RACK_GRID_WIDTH, RACK_GRID_HEIGHT - RACK_GRID_WIDTH)));
+  addChild(Widget::create<JLHHexScrew>(Vec(16, 1)));
+  addChild(Widget::create<JLHHexScrew>(
+      Vec(16, 366)));
 
-  addParam(ParamWidget::create<RCKnobRed>(Vec(8, 53), module, EqModule::FREQ_PARAM, 30.0f, 14000.0f, 7000.0f));
-  addParam(ParamWidget::create<RCKnobRedSnap>(Vec(8, 125), module, EqModule::TYPE_PARAM, 0.0f, 6.0f, 0.0f));
-  addParam(ParamWidget::create<RCKnobRed>(Vec(8, 169), module, EqModule::Q_PARAM, 0.0f, 2.0f, 0.0f));
+  addParam(ParamWidget::create<LightKnob>(Vec(10, 104.5), module, EqModule::FREQ_PARAM, 30.0f, 14000.0f, 7000.0f));
+  addParam(ParamWidget::create<LightKnobSnap>(Vec(10, 179.5), module, EqModule::TYPE_PARAM, 0.0f, 6.0f, 0.0f));
+  addParam(ParamWidget::create<LightKnob>(Vec(10, 229.5), module, EqModule::Q_PARAM, 0.0f, 2.0f, 0.0f));
 
-  addInput(Port::create<RCJackSmallRed>(Vec(10, 225), Port::INPUT, module, EqModule::AUDIO_INPUT));
-  addOutput(Port::create<RCJackSmallRed>(Vec(10, 265), Port::OUTPUT, module, EqModule::AUDIO_OUTPUT));
+  addInput(Port::create<CDPort>(Vec(0, 35), Port::INPUT, module, EqModule::AUDIO_INPUT));
+  addOutput(Port::create<CDPort>(Vec(20, 35), Port::OUTPUT, module, EqModule::AUDIO_OUTPUT));
 }
 
 Model *modelEq = Model::create<EqModule, EqWidget>("CharredDesert", "Eq", "Eq", EQUALIZER_TAG);

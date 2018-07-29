@@ -1,10 +1,8 @@
 #include <cstdint>
 
 #include "../CharredDesert.hpp"
-
 #include "../../deps/SynthDevKit/src/CV.hpp"
 #include "../../deps/SynthDevKit/src/DTMF.hpp"
-#include "../../deps/rack-components/jacks.hpp"
 
 struct DTMFModule : Module {
   enum ParamIds { NUM_PARAMS };

@@ -1,5 +1,8 @@
 #include "../controller/Noise.hpp"
 
+#include "../../deps/rack-components/screws.hpp"
+#include "components.hpp"
+
 struct NoiseWidget : ModuleWidget {
   NoiseWidget(NoiseModule *module);
 };
@@ -14,16 +17,16 @@ NoiseWidget::NoiseWidget(NoiseModule *module) : ModuleWidget(module) {
     addChild(panel);
   }
 
-  addChild(Widget::create<ScrewSilver>(Vec(RACK_GRID_WIDTH, 0)));
-  addChild(Widget::create<ScrewSilver>(
-      Vec(RACK_GRID_WIDTH, RACK_GRID_HEIGHT - RACK_GRID_WIDTH)));
+  addChild(Widget::create<JLHHexScrew>(Vec(16, 1)));
+  addChild(Widget::create<JLHHexScrew>(
+      Vec(16, 366)));
 
-  addInput(Port::create<RCJackSmallRed>(Vec(10, 45), Port::INPUT, module, NoiseModule::CV_INPUT));
-  addParam(ParamWidget::create<CKSS>(Vec(15, 112), module, NoiseModule::NOISE_SWITCH,
+  addInput(Port::create<CDPort>(Vec(10, 35), Port::INPUT, module, NoiseModule::CV_INPUT));
+  addParam(ParamWidget::create<CKSS>(Vec(15, 95), module, NoiseModule::NOISE_SWITCH,
                              0.0, 1.0, 1.0));
   addOutput(
-      Port::create<RCJackSmallRed>(Vec(10, 165), Port::OUTPUT, module, NoiseModule::AUDIO_OUTPUT));
-  addChild(ModuleLightWidget::create<MediumLight<RedLight>>(Vec(18, 220), module,
+      Port::create<CDPort>(Vec(10, 135), Port::OUTPUT, module, NoiseModule::AUDIO_OUTPUT));
+  addChild(ModuleLightWidget::create<MediumLight<RedLight>>(Vec(18, 209), module,
                                               NoiseModule::ON_LED));
 }
 

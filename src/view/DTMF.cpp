@@ -1,5 +1,9 @@
 #include "../controller/DTMF.hpp"
 
+#include "../../deps/rack-components/jacks.hpp"
+#include "../../deps/rack-components/screws.hpp"
+#include "components.hpp"
+
 struct DTMFWidget : ModuleWidget {
   DTMFWidget(DTMFModule *module);
 };
@@ -14,14 +18,14 @@ DTMFWidget::DTMFWidget(DTMFModule *module) : ModuleWidget(module) {
     addChild(panel);
   }
 
-  addChild(Widget::create<ScrewSilver>(Vec(RACK_GRID_WIDTH, 0)));
-  addChild(Widget::create<ScrewSilver>(
-      Vec(RACK_GRID_WIDTH, RACK_GRID_HEIGHT - RACK_GRID_WIDTH)));
+  addChild(Widget::create<JLHHexScrew>(Vec(16, 1)));
+  addChild(Widget::create<JLHHexScrew>(
+      Vec(16, 366)));
 
-  addInput(Port::create<RCJackSmallRed>(Vec(10, 45), Port::INPUT, module, DTMFModule::CV_INPUT));
-  addInput(Port::create<RCJackSmallRed>(Vec(10, 100), Port::INPUT, module, DTMFModule::VOCT_INPUT));
-  addOutput(Port::create<RCJackSmallRed>(Vec(10, 165), Port::OUTPUT, module, DTMFModule::AUDIO_OUTPUT));
-  addChild(ModuleLightWidget::create<MediumLight<RedLight>>(Vec(18, 220), module,
+  addInput(Port::create<CDPort>(Vec(10, 35), Port::INPUT, module, DTMFModule::CV_INPUT));
+  addInput(Port::create<CDPort>(Vec(10, 85), Port::INPUT, module, DTMFModule::VOCT_INPUT));
+  addOutput(Port::create<CDPort>(Vec(10, 135), Port::OUTPUT, module, DTMFModule::AUDIO_OUTPUT));
+  addChild(ModuleLightWidget::create<MediumLight<RedLight>>(Vec(18, 209), module,
                                               DTMFModule::ON_LED));
 }
 

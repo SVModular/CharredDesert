@@ -1,11 +1,9 @@
 #include <cstdint>
 
 #include "../CharredDesert.hpp"
-
 #include "../../deps/SynthDevKit/src/CV.hpp"
 #include "../../deps/SynthDevKit/src/PinkNoise.hpp"
 #include "../../deps/SynthDevKit/src/WhiteNoise.hpp"
-#include "../../deps/rack-components/jacks.hpp"
 
 struct NoiseModule : Module {
   enum ParamIds { NOISE_SWITCH, NUM_PARAMS };

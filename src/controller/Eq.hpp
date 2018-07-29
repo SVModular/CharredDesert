@@ -1,10 +1,7 @@
 #include <cstdint>
 
 #include "../CharredDesert.hpp"
-#include "../../deps/rack-components/jacks.hpp"
-#include "../../deps/rack-components/knobs.hpp"
-#include "../../deps/rack-components/display.hpp"
-#include "../../deps/Biquad/Biquad.h"
+#include "Biquad.h"
 
 struct EqModule : Module {
   enum ParamIds { FREQ_PARAM, TYPE_PARAM, Q_PARAM, NUM_PARAMS };

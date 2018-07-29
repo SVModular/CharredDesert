@@ -1,7 +1,6 @@
 #include <cstdint>
 
 #include "../CharredDesert.hpp"
-#include "../../deps/rack-components/jacks.hpp"
 
 struct NotModule : Module {
   enum ParamIds { SWITCH, NUM_PARAMS };
