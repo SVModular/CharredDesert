@@ -1,14 +1,1 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg width="25px" height="25px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-miterlimit:1.414;">
-    <g id="KnobLight">
-      <polygon
-        id="SvgjsPolygon1006"
-        points="16.20820393249937,1.0000000000000018 8.791796067500632,1 2.7917960675006324,5.359255168032165 0.5,12.412678195541842 2.7917960675006306,19.46610122305152 8.791796067500629,23.825356391083687 16.208203932499366,23.825356391083687 22.208203932499366,19.466101223051524 24.5,12.412678195541847 22.208203932499373,5.359255168032169"
-        fill="#909092"
-        stroke="#606062"
-        stroke-width="0.5"></polygon>
-      <rect id="SvgjsRect1007" width="2" height="4" fill="#404042" x="11.5" y="1"></rect>
-      <circle id="SvgjsCircle1008" r="8" cx="12.5" cy="12.5" fill="#d0d0d2" stroke="#606062" stroke-width="0.5"></circle>
-    </g>
-</svg>
+<svg width="25" height="25" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-miterlimit="1.414"><path fill="#909092" stroke="#606062" stroke-width=".5" d="M16.208 1H8.792l-6 4.36L.5 12.412l2.292 7.053 6 4.36h7.416l6-4.36 2.292-7.053-2.292-7.054z"/><path fill="#404042" d="M11.5 1h2v4h-2z"/><circle r="8" cx="12.5" cy="12.5" fill="#d0d0d2" stroke="#606062" stroke-width=".5"/></svg>
