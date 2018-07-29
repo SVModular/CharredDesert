@@ -22,7 +22,7 @@ EqWidget::EqWidget(EqModule *module) : ModuleWidget(module) {
   {
 		FrequencyDisplay *frequency = new FrequencyDisplay();
 		frequency->value = &module->frequency;
-    frequency->box.pos = Vec(1, 46);
+    frequency->box.pos = Vec(2, 46);
 		frequency->box.size = Vec(40, 18);
 		addChild(frequency);
 	}
@@ -30,7 +30,7 @@ EqWidget::EqWidget(EqModule *module) : ModuleWidget(module) {
   {
 		EqTypeDisplay *type = new EqTypeDisplay();
 		type->value = &module->filterType;
-    type->box.pos = Vec(1, 81);
+    type->box.pos = Vec(2, 81);
 		type->box.size = Vec(40, 18);
 		addChild(type);
 	}
