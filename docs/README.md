@@ -1,6 +1,6 @@
 # Charred Desert
 
-![CV-SEQ](images/cvseq.png) ![DTMF](images/dtmf.png) ![EQ](images/eq.png) ![NOISE](images/noise.png) ![NOT](images/not.png) ![OSCAR^2](images/oscar2.png) ![PAN](images/pan.png) ![SHIFT](images/shift.png)
+![CV-SEQ](images/cvseq.png) ![DTMF](images/dtmf.png) ![EQ](images/eq.png) ![NOISE](images/noise.png) ![NOT](images/not.png) ![OSCAR^2](images/oscar2.png) ![PAN](images/pan.png) ![SHIFT](images/shift.png) ![CARBON](images/carbon.png)
 
 A collection of esoteric modules for VCV Rack.
 
@@ -12,3 +12,4 @@ A collection of esoteric modules for VCV Rack.
 * [Oscar^2](Oscar2.md) - oscillator madness
 * [Pan](Pan.md) - stereo pan a mono input
 * [Shift](Shift.md) - CV and waveform shifter
+* [Carbon](Carbon.md) - moog-like filter
