@@ -7,6 +7,7 @@ private:
   float strength = 0.8f;
 
   Vec shadowPos = Vec(3, 5);
+
 public:
   void setShadowPosition(float x, float y) {
     shadowPos = Vec(x, y);
@@ -16,29 +17,31 @@ public:
     CDShadow::box = box;
   }
 
-  void setSize (float size) {
+  void setSize(float size) {
     CDShadow::size = size;
   }
 
-  void setStrength (float strength) {
+  void setStrength(float strength) {
     CDShadow::strength = strength;
   }
 
-  void drawShadow (NVGcontext *vg, float strength, float size) {
+  void drawShadow(NVGcontext *vg, float strength, float size) {
     // add shadow
     nvgBeginPath(vg);
     nvgRect(vg, -20, -20, box.size.x + 40, box.size.y + 40);
 
     NVGcolor icol = nvgRGBAf(0.0f, 0.0f, 0.0f, strength);
-    NVGcolor ocol = nvgRGBAf(0.0f, 0.0f, 0.0f, 0.f);;
+    NVGcolor ocol = nvgRGBAf(0.0f, 0.0f, 0.0f, 0.f);
+    ;
 
-    NVGpaint paint = nvgRadialGradient(vg, box.size.x / 2 + shadowPos.x, box.size.y / 2 + shadowPos.y,
-                                       box.size.x * 0.3f, box.size.x * size, icol, ocol);
+    NVGpaint paint = nvgRadialGradient(
+        vg, box.size.x / 2 + shadowPos.x, box.size.y / 2 + shadowPos.y,
+        box.size.x * 0.3f, box.size.x * size, icol, ocol);
     nvgFillPaint(vg, paint);
     nvgFill(vg);
   }
 
-  void draw (NVGcontext *vg) {
+  void draw(NVGcontext *vg) {
     drawShadow(vg, strength, size);
   };
 };
@@ -48,7 +51,7 @@ protected:
   CDShadow shadow = CDShadow();
 
 public:
-  void setSVG (std::shared_ptr<SVG> svg) {
+  void setSVG(std::shared_ptr<SVG> svg) {
     RoundKnob::setSVG(svg);
 
     shadow.setBox(box);
@@ -64,13 +67,13 @@ public:
 };
 
 struct LightKnob : CDKnob {
-  LightKnob ( ) {
+  LightKnob() {
     setSVG(SVG::load(assetPlugin(plugin, "res/Knob.svg")));
   }
 };
 
 struct LightKnobSnap : LightKnob {
-  LightKnobSnap ( ) {
+  LightKnobSnap() {
     snap = true;
   }
 };
@@ -80,7 +83,7 @@ private:
   CDShadow shadow = CDShadow();
 
 public:
-  CDPort ( ) {
+  CDPort() {
     background->svg = SVG::load(assetPlugin(plugin, "res/Port.svg"));
     background->wrap();
     box.size = background->box.size;
@@ -91,7 +94,7 @@ public:
     shadow.setShadowPosition(2, 1);
   }
 
-  void draw (NVGcontext *vg) override {
+  void draw(NVGcontext *vg) override {
     shadow.draw(vg);
     SVGPort::draw(vg);
   }

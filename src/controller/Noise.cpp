@@ -1,6 +1,7 @@
 #include "Noise.hpp"
 
-NoiseModule::NoiseModule() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
+NoiseModule::NoiseModule()
+    : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
   wn = new SynthDevKit::WhiteNoise(0);
   pn = new SynthDevKit::PinkNoise(0);
   cv = new SynthDevKit::CV(1.7f);

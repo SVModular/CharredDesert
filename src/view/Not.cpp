@@ -18,14 +18,15 @@ NotWidget::NotWidget(NotModule *module) : ModuleWidget(module) {
   }
 
   addChild(Widget::create<JLHHexScrew>(Vec(16, 1)));
-  addChild(Widget::create<JLHHexScrew>(
-      Vec(16, 366)));
+  addChild(Widget::create<JLHHexScrew>(Vec(16, 366)));
 
-  addInput(Port::create<CDPort>(Vec(10, 35), Port::INPUT, module, NotModule::INPUT));
+  addInput(
+      Port::create<CDPort>(Vec(10, 35), Port::INPUT, module, NotModule::INPUT));
   addParam(ParamWidget::create<CKSS>(Vec(15, 95), module, NotModule::SWITCH,
-                             0.0, 1.0, 1.0));
-  addOutput(
-      Port::create<CDPort>(Vec(10, 135), Port::OUTPUT, module, NotModule::OUTPUT));
+                                     0.0, 1.0, 1.0));
+  addOutput(Port::create<CDPort>(Vec(10, 135), Port::OUTPUT, module,
+                                 NotModule::OUTPUT));
 }
 
-Model *modelNot = Model::create<NotModule, NotWidget>("CharredDesert", "Not", "Not", LOGIC_TAG);
+Model *modelNot = Model::create<NotModule, NotWidget>("CharredDesert", "Not",
+                                                      "Not", LOGIC_TAG);

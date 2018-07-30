@@ -1,6 +1,8 @@
 #include "Shift.hpp"
 
-ShiftModule::ShiftModule() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) { }
+ShiftModule::ShiftModule()
+    : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
+}
 
 #define ADD_CV(a, b) (a.value + b.value)
 

@@ -1,7 +1,8 @@
 #include "CVSeq.hpp"
 
 #define ADD_CV(a, b) clamp(a.value + b.value, 0.0f, 10.0f)
-CVSeqModule::CVSeqModule() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
+CVSeqModule::CVSeqModule()
+    : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
   cv = new SynthDevKit::CV(1.7f);
   currentStep = 0;
 }
@@ -14,7 +15,7 @@ void CVSeqModule::step() {
 
   if (cv->newTrigger()) {
     current = ADD_CV(inputs[currentStep], params[currentStep]);
-  //  current = params[currentStep].value;
+    //  current = params[currentStep].value;
     outputs[CV_OUTPUT].value = current;
     for (int i = 0; i < 4; i++) {
       if (i == currentStep) {

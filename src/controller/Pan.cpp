@@ -1,6 +1,8 @@
 #include "Pan.hpp"
 
-PanModule::PanModule() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) { }
+PanModule::PanModule()
+    : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
+}
 
 #define ADD_CV(a, b) clamp(a.value + b.value, -5.0f, 5.0f)
 

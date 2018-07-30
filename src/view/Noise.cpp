@@ -18,16 +18,17 @@ NoiseWidget::NoiseWidget(NoiseModule *module) : ModuleWidget(module) {
   }
 
   addChild(Widget::create<JLHHexScrew>(Vec(16, 1)));
-  addChild(Widget::create<JLHHexScrew>(
-      Vec(16, 366)));
+  addChild(Widget::create<JLHHexScrew>(Vec(16, 366)));
 
-  addInput(Port::create<CDPort>(Vec(10, 35), Port::INPUT, module, NoiseModule::CV_INPUT));
-  addParam(ParamWidget::create<CKSS>(Vec(15, 95), module, NoiseModule::NOISE_SWITCH,
-                             0.0, 1.0, 1.0));
-  addOutput(
-      Port::create<CDPort>(Vec(10, 135), Port::OUTPUT, module, NoiseModule::AUDIO_OUTPUT));
-  addChild(ModuleLightWidget::create<MediumLight<RedLight>>(Vec(18, 209), module,
-                                              NoiseModule::ON_LED));
+  addInput(Port::create<CDPort>(Vec(10, 35), Port::INPUT, module,
+                                NoiseModule::CV_INPUT));
+  addParam(ParamWidget::create<CKSS>(Vec(15, 95), module,
+                                     NoiseModule::NOISE_SWITCH, 0.0, 1.0, 1.0));
+  addOutput(Port::create<CDPort>(Vec(10, 135), Port::OUTPUT, module,
+                                 NoiseModule::AUDIO_OUTPUT));
+  addChild(ModuleLightWidget::create<MediumLight<RedLight>>(
+      Vec(18, 209), module, NoiseModule::ON_LED));
 }
 
-Model *modelNoise = Model::create<NoiseModule, NoiseWidget>("CharredDesert", "Noise", "Noise", NOISE_TAG);
+Model *modelNoise = Model::create<NoiseModule, NoiseWidget>(
+    "CharredDesert", "Noise", "Noise", NOISE_TAG);

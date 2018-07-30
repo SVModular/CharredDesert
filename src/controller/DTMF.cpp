@@ -1,6 +1,7 @@
 #include "DTMF.hpp"
 
-DTMFModule::DTMFModule() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
+DTMFModule::DTMFModule()
+    : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
   cv = new SynthDevKit::CV(1.7f);
   dtmf = new SynthDevKit::DTMF(44100);
 }

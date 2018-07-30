@@ -1,6 +1,7 @@
 #include "Not.hpp"
 
-NotModule::NotModule() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
+NotModule::NotModule()
+    : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
 }
 
 void NotModule::step() {

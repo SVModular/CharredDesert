@@ -38,10 +38,7 @@ struct Oscar2Module : Module {
     FREQ_INPUT,
     NUM_INPUTS
   };
-  enum OutputIds {
-    AUDIO_OUTPUT,
-    NUM_OUTPUTS
-  };
+  enum OutputIds { AUDIO_OUTPUT, NUM_OUTPUTS };
   enum LightIds { NUM_LIGHTS };
 
   Oscar2Module();
