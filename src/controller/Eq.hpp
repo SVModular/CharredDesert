@@ -12,9 +12,9 @@ struct EqModule : Module {
   EqModule();
   void step() override;
 
-  float frequency = 0.0f;
-  float sampleRate = 0.0f;
+  float frequency = 7000.0f;
+  float sampleRate;
   uint8_t filterType = 0;
-  float q = 0.0f;
-  Biquad *filter = new Biquad();
+  float q = 0.1f;
+  Biquad *filter;
 };

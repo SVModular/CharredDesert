@@ -1,7 +1,9 @@
 #include "Eq.hpp"
 
 EqModule::EqModule() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
+  sampleRate = engineGetSampleRate();
   filter = new Biquad(bq_type_lowpass, frequency / sampleRate, q, 6);
+  filter->calcBiquad();
 }
 
 void EqModule::step() {
@@ -24,5 +26,7 @@ void EqModule::step() {
     filter->calcBiquad();
   }
 
-  outputs[AUDIO_OUTPUT].value = 5 * filter->process(audio_in);
+  if (outputs[AUDIO_OUTPUT].active) {
+    outputs[AUDIO_OUTPUT].value = 5.0f * filter->process(audio_in / 5.0f);
+  }
 }

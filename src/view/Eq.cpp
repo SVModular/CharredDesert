@@ -43,7 +43,7 @@ EqWidget::EqWidget(EqModule *module) : ModuleWidget(module) {
   addParam(ParamWidget::create<LightKnobSnap>(
       Vec(10, 179.5), module, EqModule::TYPE_PARAM, 0.0f, 6.0f, 0.0f));
   addParam(ParamWidget::create<LightKnob>(Vec(10, 229.5), module,
-                                          EqModule::Q_PARAM, 0.0f, 2.0f, 0.0f));
+                                          EqModule::Q_PARAM, 0.1f, 6.0f, 0.1f));
 
   addInput(Port::create<CDPort>(Vec(0, 35), Port::INPUT, module,
                                 EqModule::AUDIO_INPUT));
