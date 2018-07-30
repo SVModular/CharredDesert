@@ -11,7 +11,7 @@ star the repo, or keep checking back.
 
 ## Current Modules
 
-![CV-SEQ](images/cvseq.png) ![DTMF](images/dtmf.png) ![EQ](images/eq.png) ![NOISE](images/noise.png) ![NOT](images/not.png) ![OSCAR^2](images/oscar2.png) ![PAN](images/pan.png) ![SHIFT](images/shift.png)
+![CV-SEQ](docs/images/cvseq.png) ![DTMF](docs/images/dtmf.png) ![EQ](docs/images/eq.png) ![NOISE](docs/images/noise.png) ![NOT](docs/images/not.png) ![OSCAR^2](docs/images/oscar2.png) ![PAN](docs/images/pan.png) ![SHIFT](docs/images/shift.png)
 
 For more information, see the [documentation](docs/README.md).
 
