@@ -11,15 +11,7 @@ star the repo, or keep checking back.
 
 ## Current Modules
 
-![Modules](docs/images/all.png)
-
-* DTMF - plays DTMF tones as notes
-* Noise - plays white or pink noise
-* CVSeq - sends selectable CV values ("voltages") in order
-* Not - switchable to invert either waveforms (-5 to 5) or CV (0 to 10)
-* Pan - sends waveforms from the input to two outputs, panning between
-* Oscar - simple wave form mixing
-* Oscar^2 - advanced wave form mixing
+![CV-SEQ](images/cvseq.png) ![DTMF](images/dtmf.png) ![EQ](images/eq.png) ![NOISE](images/noise.png) ![NOT](images/not.png) ![OSCAR^2](images/oscar2.png) ![PAN](images/pan.png) ![SHIFT](images/shift.png)
 
 For more information, see the [documentation](docs/README.md).
 
