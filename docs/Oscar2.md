@@ -3,7 +3,7 @@
 **OSCAR^2** is an advanced waveform oscillator.  It provides two oscillators
 that are combined with each other with adjustable parameters.
 
-![OSCAR^2](/images/oscar2.png "OSCAR^2")
+![OSCAR^2](images/oscar2.png "OSCAR^2")
 
 **OSCAR^2** has a single `V/OCT` input for note selection, and an `OUT` port for
 the resulting waveform.
