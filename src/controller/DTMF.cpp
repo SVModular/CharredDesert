@@ -6,7 +6,7 @@ DTMFModule::DTMFModule() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHT
 }
 
 char DTMFModule::getTone(float current) {
-  for (int i = 0; i < 12; i++) {
+  for (int i = 0; i < 16; i++) {
     if ((notes[i] - 0.02) <= current && (notes[i] + 0.02) >= current) {
       return tones[i];
     }
