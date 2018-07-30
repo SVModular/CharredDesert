@@ -5,7 +5,7 @@ and resonance inputs also controllable by CV.
 
 ![CARBON Image](images/carbon.png "CARBON")
 
-**CV-SEQ** has 3 inputs and 1 output.  The primary input is `IN`, which provides
+**CARBON** has 3 inputs and 1 output.  The primary input is `IN`, which provides
 audio to be filtered.
 
 `OUT` outputs filtered value.
