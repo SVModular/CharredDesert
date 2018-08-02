@@ -38,7 +38,7 @@ CarbonWidget::CarbonWidget(CarbonModule *module) : ModuleWidget(module) {
                                 CarbonModule::FREQ_INPUT));
 
   addParam(ParamWidget::create<LightKnob>(
-      Vec(28.5, 154.5), module, CarbonModule::REZ_PARAM, 0.0f, 2.0f, 4.0f));
+      Vec(28.5, 154.5), module, CarbonModule::REZ_PARAM, 0.0f, 4.0f, 2.0f));
   addInput(Port::create<CDPort>(Vec(4, 160), Port::INPUT, module,
                                 CarbonModule::REZ_INPUT));
 
