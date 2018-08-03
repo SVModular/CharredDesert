@@ -17,3 +17,4 @@ extern Model *modelCVSeq;
 extern Model *modelOscar2;
 extern Model *modelEq;
 extern Model *modelCarbon;
+extern Model *modelMixer;
