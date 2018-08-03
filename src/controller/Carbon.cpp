@@ -2,7 +2,6 @@
 
 CarbonModule::CarbonModule()
     : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
-      filter.setSamplerate(engineGetSampleRate());
 }
 
 void CarbonModule::step() {
