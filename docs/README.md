@@ -1,6 +1,6 @@
 # Charred Desert
 
-![CV-SEQ](images/cvseq.png) ![DTMF](images/dtmf.png) ![EQ](images/eq.png) ![NOISE](images/noise.png) ![NOT](images/not.png) ![OSCAR^2](images/oscar2.png) ![PAN](images/pan.png) ![SHIFT](images/shift.png) ![CARBON](images/carbon.png)
+![CV-SEQ](images/cvseq.png) ![DTMF](images/dtmf.png) ![EQ](images/eq.png) ![NOISE](images/noise.png) ![NOT](images/not.png) ![OSCAR^2](images/oscar2.png) ![PAN](images/pan.png) ![SHIFT](images/shift.png) ![CARBON](images/carbon.png) ![MIXER](images/mixer.png)
 
 A collection of esoteric modules for VCV Rack.
 
