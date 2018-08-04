@@ -22,4 +22,5 @@ void init(rack::Plugin *p) {
   p->addModel(modelEq);
   p->addModel(modelCarbon);
   p->addModel(modelMixer);
+  p->addModel(modelMixerCV);
 }
