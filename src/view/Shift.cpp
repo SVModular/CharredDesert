@@ -26,10 +26,10 @@ ShiftWidget::ShiftWidget(ShiftModule *module) : ModuleWidget(module) {
                                      0.0f, 1.0f, 0.0f));
 
   addParam(ParamWidget::create<LightKnob>(
-      Vec(28.5, 179.5), module, ShiftModule::KNOB, -5.0f, 5.0f, 0.0f));
-  addInput(Port::create<CDPort>(Vec(4, 185), Port::INPUT, module,
+      Vec(28.5, 154.5), module, ShiftModule::KNOB, -5.0f, 5.0f, 0.0f));
+  addInput(Port::create<CDPort>(Vec(4, 160), Port::INPUT, module,
                                 ShiftModule::SHIFT));
-  addOutput(Port::create<CDPort>(Vec(17.5, 236), Port::OUTPUT, module,
+  addOutput(Port::create<CDPort>(Vec(17.5, 211), Port::OUTPUT, module,
                                  ShiftModule::OUTPUT));
 }
 
