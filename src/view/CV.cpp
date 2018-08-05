@@ -21,16 +21,16 @@ CVWidget::CVWidget(CVModule *module) : ModuleWidget(module) {
   addChild(Widget::create<JLHHexScrew>(Vec(8.5, 366)));
 
   for (int i = 0; i < CV_COUNT; i++) {
-    addParam(ParamWidget::create<CDLEDBezel>(Vec(3, 30 + (190 * i)), module,
+    addParam(ParamWidget::create<CDLEDBezel>(Vec(3, 35 + (190 * i)), module,
                                           CVModule::SWITCH + i, 0.0f,
                                           1.0f, 0.0f));
     addChild(ModuleLightWidget::create<CDButtonLight<GreenLight>>(
-        Vec(5.2, 32 + (190 * i)), module, CVModule::OUT_LIGHT + i));
+        Vec(5.2, 37 + (190 * i)), module, CVModule::OUT_LIGHT + i));
 
-    addParam(ParamWidget::create<LightKnobSmall>(Vec(5, 80 + (190 * i)), module, CVModule::KNOB + i,
+    addParam(ParamWidget::create<LightKnobSmall>(Vec(5, 85 + (190 * i)), module, CVModule::KNOB + i,
                                        0.0f, 10.0f, 0.0f));
 
-    addOutput(Port::create<CDPort>(Vec(1, 130 + (190 * i)), Port::OUTPUT, module,
+    addOutput(Port::create<CDPort>(Vec(1, 135 + (190 * i)), Port::OUTPUT, module,
                                    CVModule::OUT + i));
   }
 }
