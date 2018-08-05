@@ -21,7 +21,7 @@ CVWidget::CVWidget(CVModule *module) : ModuleWidget(module) {
   addChild(Widget::create<JLHHexScrew>(Vec(8.5, 366)));
 
   for (int i = 0; i < CV_COUNT; i++) {
-    addParam(ParamWidget::create<CDLEDBezel>(Vec(3, 35 + (190 * i)), module,
+    addParam(ParamWidget::create<CDLEDBezel>(Vec(4, 35 + (190 * i)), module,
                                           CVModule::SWITCH + i, 0.0f,
                                           1.0f, 0.0f));
     addChild(ModuleLightWidget::create<CDButtonLight<GreenLight>>(
@@ -30,7 +30,7 @@ CVWidget::CVWidget(CVModule *module) : ModuleWidget(module) {
     addParam(ParamWidget::create<LightKnobSmall>(Vec(5, 85 + (190 * i)), module, CVModule::KNOB + i,
                                        0.0f, 10.0f, 0.0f));
 
-    addOutput(Port::create<CDPort>(Vec(1, 135 + (190 * i)), Port::OUTPUT, module,
+    addOutput(Port::create<CDPort>(Vec(3, 135 + (190 * i)), Port::OUTPUT, module,
                                    CVModule::OUT + i));
   }
 }
