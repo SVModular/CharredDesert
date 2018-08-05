@@ -38,12 +38,10 @@ void MixerModule::step() {
 
     if (solo_button[i]->newTrigger()) {
       solo[i] = !solo[i];
-      lights[SOLO_LIGHT + i].value = solo[i] ? 1.0f : 0.0f;
     }
 
     if (mute_button[i]->newTrigger()) {
       mute[i] = !mute[i];
-      lights[MUTE_LIGHT + i].value = mute[i] ? 1.0f : 0.0f;
     }
 
     // if any are solo, there's a solo
@@ -98,6 +96,9 @@ void MixerModule::step() {
       }
     }
 
+    lights[SOLO_LIGHT + i].value = solo[i] ? 1.0f : 0.0f;
+    lights[MUTE_LIGHT + i].value = mute[i] ? 1.0f : 0.0f;
+
     // the led's
     channel_led_l[i] = fabsf(output_l[i]);
     channel_led_r[i] = fabsf(output_r[i]);
@@ -109,12 +110,10 @@ void MixerModule::step() {
 
   if (mute_l->newTrigger()) {
     master_mute_l = !master_mute_l;
-    lights[MUTE_L_MAIN].value = master_mute_l ? 1.0f : 0.0f;
   }
 
   if (mute_r->newTrigger()) {
     master_mute_r = !master_mute_r;
-    lights[MUTE_R_MAIN].value = master_mute_r ? 1.0f : 0.0f;
   }
 
   if (master_mute_l) {
@@ -133,6 +132,8 @@ void MixerModule::step() {
     master_r = master_r * volume;
   }
 
+  lights[MUTE_L_MAIN].value = master_mute_l ? 1.0f : 0.0f;
+  lights[MUTE_R_MAIN].value = master_mute_r ? 1.0f : 0.0f;
 
   // apply master volume to the led's
   master_led_l = fabsf(master_l);

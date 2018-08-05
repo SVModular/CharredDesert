@@ -46,29 +46,28 @@ void MixerCVModule::step() {
     // buttons first
     if (solo_button[i]->newTrigger()) {
       solo[i] = !solo[i];
-      lights[SOLO_LIGHT + i].value = solo[i] ? 1.0f : 0.0f;
     }
 
     if (mute_button[i]->newTrigger()) {
       mute[i] = !mute[i];
-      lights[MUTE_LIGHT + i].value = mute[i] ? 1.0f : 0.0f;
     }
 
     // then cv
     if (channel_solo[i]->newTrigger()) {
       solo[i] = !solo[i];
-      lights[SOLO_LIGHT + i].value = solo[i] ? 1.0f : 0.0f;
     }
 
     if (channel_mute[i]->newTrigger()) {
       mute[i] = !mute[i];
-      lights[MUTE_LIGHT + i].value = mute[i] ? 1.0f : 0.0f;
     }
 
     // if any are solo, there's a solo
     if (solo[i]) {
       has_solo = true;
     }
+
+    lights[SOLO_LIGHT + i].value = solo[i] ? 1.0f : 0.0f;
+    lights[MUTE_LIGHT + i].value = mute[i] ? 1.0f : 0.0f;
   }
 
   // iterate through the channels
@@ -147,7 +146,6 @@ void MixerCVModule::step() {
 
   if (mute_l_param->newTrigger()) {
     master_mute_l = !master_mute_l;
-    lights[MUTE_L_MAIN].value = master_mute_l ? 1.0f : 0.0f;
   }
 
   if (inputs[MAIN_L_MUTE].active) {
@@ -155,7 +153,6 @@ void MixerCVModule::step() {
 
     if (mute_l->newTrigger()) {
       master_mute_l = !master_mute_l;
-      lights[MUTE_L_MAIN].value = master_mute_l ? 1.0f : 0.0f;
     }
   }
 
@@ -185,7 +182,6 @@ void MixerCVModule::step() {
 
   if (mute_r_param->newTrigger()) {
     master_mute_r = !master_mute_r;
-    lights[MUTE_R_MAIN].value = master_mute_r ? 1.0f : 0.0f;
   }
 
   if (inputs[MAIN_R_MUTE].active) {
@@ -193,7 +189,6 @@ void MixerCVModule::step() {
 
     if (mute_r->newTrigger()) {
       master_mute_r = !master_mute_r;
-      lights[MUTE_R_MAIN].value = master_mute_r ? 1.0f : 0.0f;
     }
   }
 
@@ -219,6 +214,9 @@ void MixerCVModule::step() {
     master_r = master_r * volume;
   }
 
+
+  lights[MUTE_L_MAIN].value = master_mute_l ? 1.0f : 0.0f;
+  lights[MUTE_R_MAIN].value = master_mute_r ? 1.0f : 0.0f;
 
   // apply master volume to the led's
   master_led_l = fabsf(master_l);

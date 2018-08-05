@@ -111,13 +111,13 @@ MixerWidget::MixerWidget(MixerModule *module) : ModuleWidget(module) {
   addParam(ParamWidget::create<CDLEDBezel>(Vec(363, 287), module,
                                          MixerModule::MUTE_L_PARAM, 0.0f,
                                          1.0f, 0.0f));
-  addChild(ModuleLightWidget::create<CDButtonLight<GreenLight>>(
+  addChild(ModuleLightWidget::create<CDButtonLight<RedLight>>(
       Vec(365.2, 289), module, MixerModule::MUTE_L_MAIN));
 
   addParam(ParamWidget::create<CDLEDBezel>(Vec(393, 287), module,
                                          MixerModule::MUTE_R_PARAM, 0.0f,
                                          1.0f, 0.0f));
-  addChild(ModuleLightWidget::create<CDButtonLight<GreenLight>>(
+  addChild(ModuleLightWidget::create<CDButtonLight<RedLight>>(
       Vec(395.2, 289), module, MixerModule::MUTE_R_MAIN));
 
 

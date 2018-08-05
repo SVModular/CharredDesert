@@ -1,5 +1,5 @@
 #include "CV.hpp"
-
+#include <cstdio>
 CVModule::CVModule()
     : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
   for (int i = 0; i < CV_COUNT; i++) {
