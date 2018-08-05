@@ -119,13 +119,16 @@ struct MixerCVModule : Module {
 
     json_t *v = json_object_get(rootJ, "mute_l");
     if (v) {
-      master_mute_l = json_boolean(v);
+      master_mute_l = json_boolean_value(v);
+    } else {
+      master_mute_l = false;
     }
 
     v = json_object_get(rootJ, "mute_r");
     if (v) {
-      master_mute_r = json_boolean(v);
+      master_mute_r = json_boolean_value(v);
+    } else {
+      master_mute_l = false;
     }
   }
-
 };

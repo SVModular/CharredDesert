@@ -19,8 +19,8 @@ MixerCVModule::MixerCVModule()
   master_mute_l = false;
   master_mute_r = false;
 
-  mute_l = new SynthDevKit::CV(0.5f);
-  mute_r = new SynthDevKit::CV(0.5f);
+  mute_l = new SynthDevKit::CV(1.7f);
+  mute_r = new SynthDevKit::CV(1.7f);
   mute_l_param = new SynthDevKit::CV(0.5f);
   mute_r_param = new SynthDevKit::CV(0.5f);
 }
