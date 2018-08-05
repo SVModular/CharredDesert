@@ -20,3 +20,4 @@ extern Model *modelCarbon;
 extern Model *modelMixer;
 extern Model *modelMixerCV;
 extern Model *modelCV;
+extern Model *modelM;

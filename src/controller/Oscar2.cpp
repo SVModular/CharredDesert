@@ -53,7 +53,7 @@ void Oscar2Module::step() {
     shift1 = s1;
   }
 
-  float octave1 = params[OCTAVE_PARAM1].value + inputs[OCTAVE_INPUT1].value;
+  float octave1 = clamp(params[OCTAVE_PARAM1].value + inputs[OCTAVE_INPUT1].value, -5.0f, 5.0f);
   float fine1 = params[FINE_PARAM1].value + (inputs[FINE_INPUT1].value / 2);
 
   float freq1 = clamp(freq + octave1 + fine1, -5.0f, 5.0f);

@@ -24,4 +24,5 @@ void init(rack::Plugin *p) {
   p->addModel(modelMixer);
   p->addModel(modelMixerCV);
   p->addModel(modelCV);
+  p->addModel(modelM);
 }
