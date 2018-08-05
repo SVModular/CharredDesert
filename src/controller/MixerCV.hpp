@@ -72,6 +72,8 @@ struct MixerCVModule : Module {
   SynthDevKit::CV *mute_button[MIXER_CHANNELS];
   SynthDevKit::CV *mute_l;
   SynthDevKit::CV *mute_r;
+  SynthDevKit::CV *mute_l_param;
+  SynthDevKit::CV *mute_r_param;
 
   SynthDevKit::CV *channel_mute[MIXER_CHANNELS];
   SynthDevKit::CV *channel_solo[MIXER_CHANNELS];

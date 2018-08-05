@@ -21,6 +21,8 @@ MixerCVModule::MixerCVModule()
 
   mute_l = new SynthDevKit::CV(0.5f);
   mute_r = new SynthDevKit::CV(0.5f);
+  mute_l_param = new SynthDevKit::CV(0.5f);
+  mute_r_param = new SynthDevKit::CV(0.5f);
 }
 
 void MixerCVModule::step() {
@@ -141,17 +143,20 @@ void MixerCVModule::step() {
   }
 
   // check if muted
-  mute_l->update(params[MUTE_L_PARAM].value);
-  mute_r->update(params[MUTE_R_PARAM].value);
+  mute_l_param->update(params[MUTE_L_PARAM].value);
 
-  if (mute_l->newTrigger()) {
+  if (mute_l_param->newTrigger()) {
     master_mute_l = !master_mute_l;
     lights[MUTE_L_MAIN].value = master_mute_l ? 1.0f : 0.0f;
   }
 
-  if (mute_r->newTrigger()) {
-    master_mute_r = !master_mute_r;
-    lights[MUTE_R_MAIN].value = master_mute_r ? 1.0f : 0.0f;
+  if (inputs[MAIN_L_MUTE].active) {
+    mute_l->update(inputs[MAIN_L_MUTE].value);
+
+    if (mute_l->newTrigger()) {
+      master_mute_l = !master_mute_l;
+      lights[MUTE_L_MAIN].value = master_mute_l ? 1.0f : 0.0f;
+    }
   }
 
   if (master_mute_l) {
@@ -174,6 +179,22 @@ void MixerCVModule::step() {
     // apply the left volume
     float volume = params[VOLUME_L_MAIN].value;
     master_l = master_l * volume;
+  }
+
+  mute_r_param->update(params[MUTE_R_PARAM].value);
+
+  if (mute_r_param->newTrigger()) {
+    master_mute_r = !master_mute_r;
+    lights[MUTE_R_MAIN].value = master_mute_r ? 1.0f : 0.0f;
+  }
+
+  if (inputs[MAIN_R_MUTE].active) {
+    mute_r->update(inputs[MAIN_R_MUTE].value);
+
+    if (mute_r->newTrigger()) {
+      master_mute_r = !master_mute_r;
+      lights[MUTE_R_MAIN].value = master_mute_r ? 1.0f : 0.0f;
+    }
   }
 
   if (master_mute_r) {
