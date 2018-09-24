@@ -17,8 +17,6 @@ ShiftWidget::ShiftWidget(ShiftModule *module) : ModuleWidget(module) {
     addChild(panel);
   }
 
-  addChild(Widget::create<JLHHexScrew>(Vec(23.5, 1)));
-  addChild(Widget::create<JLHHexScrew>(Vec(23.5, 366)));
 
   addInput(Port::create<CDPort>(Vec(17.5, 35), Port::INPUT, module,
                                 ShiftModule::INPUT));

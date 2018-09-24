@@ -35,8 +35,6 @@ EqWidget::EqWidget(EqModule *module) : ModuleWidget(module) {
     addChild(type);
   }
 
-  addChild(Widget::create<JLHHexScrew>(Vec(16, 1)));
-  addChild(Widget::create<JLHHexScrew>(Vec(16, 366)));
 
   addParam(ParamWidget::create<LightKnob>(
       Vec(10, 104.5), module, EqModule::FREQ_PARAM, 30.0f, 14000.0f, 7000.0f));

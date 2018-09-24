@@ -21,10 +21,6 @@ MixerWidget::MixerWidget(MixerModule *module) : ModuleWidget(module) {
     addChild(panel);
   }
 
-  addChild(Widget::create<JLHHexScrew>(Vec(1, 1)));
-  addChild(Widget::create<JLHHexScrew>(Vec(1, 366)));
-  addChild(Widget::create<JLHHexScrew>(Vec(406, 1)));
-  addChild(Widget::create<JLHHexScrew>(Vec(406, 366)));
 
   for (int i = 0; i < MIXER_CHANNELS; i++) {
     // input for each channel

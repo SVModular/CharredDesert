@@ -18,10 +18,6 @@ Oscar2Widget::Oscar2Widget(Oscar2Module *module) : ModuleWidget(module) {
     addChild(panel);
   }
 
-  addChild(Widget::create<JLHHexScrew>(Vec(1, 1)));
-  addChild(Widget::create<JLHHexScrew>(Vec(136, 1)));
-  addChild(Widget::create<JLHHexScrew>(Vec(1, 366)));
-  addChild(Widget::create<JLHHexScrew>(Vec(136, 366)));
   /*
     {
       ValueDisplay *vd = new ValueDisplay();

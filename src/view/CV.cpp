@@ -17,8 +17,6 @@ CVWidget::CVWidget(CVModule *module) : ModuleWidget(module) {
     addChild(panel);
   }
 
-  addChild(Widget::create<JLHHexScrew>(Vec(8.5, 1)));
-  addChild(Widget::create<JLHHexScrew>(Vec(8.5, 366)));
 
   for (int i = 0; i < CV_COUNT; i++) {
     addParam(ParamWidget::create<CDLEDBezel>(Vec(4, 35 + (190 * i)), module,

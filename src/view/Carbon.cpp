@@ -18,8 +18,6 @@ CarbonWidget::CarbonWidget(CarbonModule *module) : ModuleWidget(module) {
     addChild(panel);
   }
 
-  addChild(Widget::create<JLHHexScrew>(Vec(23.5, 1)));
-  addChild(Widget::create<JLHHexScrew>(Vec(23.5, 366)));
 
   {
     FrequencyDisplay *frequency = new FrequencyDisplay();

@@ -1,5 +1,5 @@
 SLUG = CharredDesert
-VERSION = 0.6.3
+VERSION = 0.6.4
 
 # FLAGS will be passed to both the C and C++ compiler
 FLAGS +=
@@ -20,7 +20,7 @@ SYNTHDEVKIT += $(wildcard deps/SynthDevKit/src/*.cpp)
 VIEWS += $(wildcard src/view/*.cpp)
 
 # Add .cpp and .c files to the build
-SOURCES += $(wildcard src/*.cpp) $(CONTROLLERS) $(VIEWS) $(SYNTHDEVKIT) $(BIQUAD)
+SOURCES += $(wildcard src/*.cpp) $(CONTROLLERS) $(VIEWS) $(SYNTHDEVKIT)
 
 # Add files to the ZIP package when running `make dist`
 # The compiled plugin is automatically added.

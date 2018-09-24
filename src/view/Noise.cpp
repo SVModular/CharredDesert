@@ -17,8 +17,6 @@ NoiseWidget::NoiseWidget(NoiseModule *module) : ModuleWidget(module) {
     addChild(panel);
   }
 
-  addChild(Widget::create<JLHHexScrew>(Vec(16, 1)));
-  addChild(Widget::create<JLHHexScrew>(Vec(16, 366)));
 
   addInput(Port::create<CDPort>(Vec(10, 35), Port::INPUT, module,
                                 NoiseModule::CV_INPUT));
