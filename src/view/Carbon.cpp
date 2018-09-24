@@ -33,7 +33,7 @@ CarbonWidget::CarbonWidget(CarbonModule *module) : ModuleWidget(module) {
                                 CarbonModule::AUDIO_INPUT));
 
   addParam(ParamWidget::create<LightKnob>(
-      Vec(28.5, 104.5), module, CarbonModule::FREQ_PARAM, 20.0f, 7000.0f, (7000 - 20) / 2));
+      Vec(28.5, 104.5), module, CarbonModule::FREQ_PARAM, 20.0f, 6000.0f, (6000 - 20) / 2));
   addInput(Port::create<CDPort>(Vec(4, 110), Port::INPUT, module,
                                 CarbonModule::FREQ_INPUT));
 

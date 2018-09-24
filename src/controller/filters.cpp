@@ -33,7 +33,6 @@ void MoogFilter::setCoefficients(float f_, float r_) {
 void MoogFilter::process(float *input, float *output, int samples) {
   for (uint16_t i = 0; i < samples; i++) {
     float in = input[i];
-
     in -= q * bf4; // feedback
     t1 = bf1;
     bf1 = (in + bf0) * pc - bf1 * f;
