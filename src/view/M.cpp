@@ -17,8 +17,6 @@ MWidget::MWidget(MModule *module) : ModuleWidget(module) {
     addChild(panel);
   }
 
-  addChild(Widget::create<JLHHexScrew>(Vec(8.5, 1)));
-  addChild(Widget::create<JLHHexScrew>(Vec(8.5, 366)));
 
   for (int i = 0; i < M_COUNT; i++) {
     addInput(Port::create<CDPort>(Vec(3, 30 + (190 * i)), Port::INPUT, module,
