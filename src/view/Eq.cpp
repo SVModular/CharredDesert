@@ -10,7 +10,7 @@ struct EqWidget : ModuleWidget {
 };
 
 EqWidget::EqWidget(EqModule *module) : ModuleWidget(module) {
-  box.size = Vec(3 * RACK_GRID_WIDTH, RACK_GRID_HEIGHT);
+  box.size = Vec(4 * RACK_GRID_WIDTH, RACK_GRID_HEIGHT);
 
   {
     SVGPanel *panel = new SVGPanel();
@@ -22,7 +22,7 @@ EqWidget::EqWidget(EqModule *module) : ModuleWidget(module) {
   {
     FrequencyDisplay *frequency = new FrequencyDisplay();
     frequency->value = &module->frequency;
-    frequency->box.pos = Vec(2, 46);
+    frequency->box.pos = Vec(5.5, 46);
     frequency->box.size = Vec(40, 18);
     addChild(frequency);
   }
@@ -30,22 +30,27 @@ EqWidget::EqWidget(EqModule *module) : ModuleWidget(module) {
   {
     EqTypeDisplay *type = new EqTypeDisplay();
     type->value = &module->filterType;
-    type->box.pos = Vec(2, 81);
+    type->box.pos = Vec(5.5, 81);
     type->box.size = Vec(40, 18);
     addChild(type);
   }
 
 
   addParam(ParamWidget::create<LightKnob>(
-      Vec(10, 104.5), module, EqModule::FREQ_PARAM, 30.0f, 14000.0f, 7000.0f));
+      Vec(28.5, 104.5), module, EqModule::FREQ_PARAM, 30.0f, 14000.0f, 7000.0f));
+  addInput(Port::create<CDPort>(Vec(4, 110), Port::INPUT, module,
+                                EqModule::FREQ_CV_INPUT));
   addParam(ParamWidget::create<LightKnobSnap>(
-      Vec(10, 179.5), module, EqModule::TYPE_PARAM, 0.0f, 6.0f, 0.0f));
-  addParam(ParamWidget::create<LightKnob>(Vec(10, 229.5), module,
+      Vec(17.5, 179.5), module, EqModule::TYPE_PARAM, 0.0f, 6.0f, 0.0f));
+  addParam(ParamWidget::create<LightKnob>(Vec(28.5, 229.5), module,
                                           EqModule::Q_PARAM, 0.1f, 6.0f, 0.1f));
+  addInput(Port::create<CDPort>(Vec(4, 235), Port::INPUT, module,
+                                EqModule::Q_CV_INPUT));
+
 
   addInput(Port::create<CDPort>(Vec(0, 35), Port::INPUT, module,
                                 EqModule::AUDIO_INPUT));
-  addOutput(Port::create<CDPort>(Vec(20, 35), Port::OUTPUT, module,
+  addOutput(Port::create<CDPort>(Vec(35, 35), Port::OUTPUT, module,
                                  EqModule::AUDIO_OUTPUT));
 }
 
