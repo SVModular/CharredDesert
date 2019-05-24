@@ -118,7 +118,7 @@ struct LightKnobSnap : LightKnob {
 
 struct LightKnobSmall : CDKnob {
   LightKnobSmall() {
-    setSVG(SVG::load(assetPlugin(plugin, "res/KnobSMall.svg")));
+    setSVG(SVG::load(assetPlugin(plugin, "res/KnobSmall.svg")));
   }
 };
 
