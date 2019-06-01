@@ -15,7 +15,7 @@ EqWidget::EqWidget(EqModule *module) : ModuleWidget(module) {
   {
     SVGPanel *panel = new SVGPanel();
     panel->box.size = box.size;
-    panel->setBackground(SVG::load(assetPlugin(plugin, "res/Eq.svg")));
+    panel->setBackground(SVG::load(assetPlugin(pluginInstance, "res/Eq.svg")));
     addChild(panel);
   }
 
@@ -54,5 +54,4 @@ EqWidget::EqWidget(EqModule *module) : ModuleWidget(module) {
                                  EqModule::AUDIO_OUTPUT));
 }
 
-Model *modelEq = Model::create<EqModule, EqWidget>("CharredDesert", "Eq", "Eq",
-                                                   EQUALIZER_TAG);
+Model *modelEq = Model::create<EqModule, EqWidget>("Eq");

@@ -13,7 +13,7 @@ MWidget::MWidget(MModule *module) : ModuleWidget(module) {
   {
     SVGPanel *panel = new SVGPanel();
     panel->box.size = box.size;
-    panel->setBackground(SVG::load(assetPlugin(plugin, "res/M.svg")));
+    panel->setBackground(SVG::load(assetPlugin(pluginInstance, "res/M.svg")));
     addChild(panel);
   }
 
@@ -33,5 +33,4 @@ MWidget::MWidget(MModule *module) : ModuleWidget(module) {
   }
 }
 
-Model *modelM = Model::create<MModule, MWidget>("CharredDesert", "M",
-                                                      "M", MIXER_TAG);
+Model *modelM = Model::create<MModule, MWidget>("M");

@@ -13,7 +13,7 @@ PanWidget::PanWidget(PanModule *module) : ModuleWidget(module) {
   {
     SVGPanel *panel = new SVGPanel();
     panel->box.size = box.size;
-    panel->setBackground(SVG::load(assetPlugin(plugin, "res/Pan.svg")));
+    panel->setBackground(SVG::load(assetPlugin(pluginInstance, "res/Pan.svg")));
     addChild(panel);
   }
 
@@ -30,5 +30,4 @@ PanWidget::PanWidget(PanModule *module) : ModuleWidget(module) {
                                  PanModule::AUDIO_OUTPUT2));
 }
 
-Model *modelPan = Model::create<PanModule, PanWidget>("CharredDesert", "Pan",
-                                                      "Pan", PANNING_TAG);
+Model *modelPan = Model::create<PanModule, PanWidget>("Pan");

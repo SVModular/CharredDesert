@@ -13,7 +13,7 @@ ShiftWidget::ShiftWidget(ShiftModule *module) : ModuleWidget(module) {
   {
     SVGPanel *panel = new SVGPanel();
     panel->box.size = box.size;
-    panel->setBackground(SVG::load(assetPlugin(plugin, "res/Shift.svg")));
+    panel->setBackground(SVG::load(assetPlugin(pluginInstance, "res/Shift.svg")));
     addChild(panel);
   }
 
@@ -31,5 +31,4 @@ ShiftWidget::ShiftWidget(ShiftModule *module) : ModuleWidget(module) {
                                  ShiftModule::OUTPUT));
 }
 
-Model *modelShift = Model::create<ShiftModule, ShiftWidget>(
-    "CharredDesert", "Shift", "Shift", LOGIC_TAG);
+Model *modelShift = Model::create<ShiftModule, ShiftWidget>("Shift");

@@ -1,8 +1,8 @@
-#include "rack.hpp"
+#include "rack0.hpp"
 
 using namespace rack;
 
-extern Plugin *plugin;
+extern Plugin *pluginInstance;
 
 ////////////////////
 // module widgets

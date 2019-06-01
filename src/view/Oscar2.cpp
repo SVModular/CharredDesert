@@ -14,7 +14,7 @@ Oscar2Widget::Oscar2Widget(Oscar2Module *module) : ModuleWidget(module) {
   {
     SVGPanel *panel = new SVGPanel();
     panel->box.size = box.size;
-    panel->setBackground(SVG::load(assetPlugin(plugin, "res/Oscar2.svg")));
+    panel->setBackground(SVG::load(assetPlugin(pluginInstance, "res/Oscar2.svg")));
     addChild(panel);
   }
 
@@ -132,5 +132,4 @@ Oscar2Widget::Oscar2Widget(Oscar2Module *module) : ModuleWidget(module) {
                                  Oscar2Module::AUDIO_OUTPUT));
 }
 
-Model *modelOscar2 = Model::create<Oscar2Module, Oscar2Widget>(
-    "CharredDesert", "Oscar^2", "Oscar^2", OSCILLATOR_TAG, WAVESHAPER_TAG);
+Model *modelOscar2 = Model::create<Oscar2Module, Oscar2Widget>("Oscar^2");

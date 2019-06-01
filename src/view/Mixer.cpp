@@ -17,7 +17,7 @@ MixerWidget::MixerWidget(MixerModule *module) : ModuleWidget(module) {
   {
     SVGPanel *panel = new SVGPanel();
     panel->box.size = box.size;
-    panel->setBackground(SVG::load(assetPlugin(plugin, "res/Mixer.svg")));
+    panel->setBackground(SVG::load(assetPlugin(pluginInstance, "res/Mixer.svg")));
     addChild(panel);
   }
 
@@ -119,5 +119,4 @@ MixerWidget::MixerWidget(MixerModule *module) : ModuleWidget(module) {
 
 }
 
-Model *modelMixer = Model::create<MixerModule, MixerWidget>("CharredDesert", "Mixer",
-                                                      "Mixer", MIXER_TAG);
+Model *modelMixer = Model::create<MixerModule, MixerWidget>("Mixer");

@@ -14,7 +14,7 @@ DTMFWidget::DTMFWidget(DTMFModule *module) : ModuleWidget(module) {
   {
     SVGPanel *panel = new SVGPanel();
     panel->box.size = box.size;
-    panel->setBackground(SVG::load(assetPlugin(plugin, "res/DTMF.svg")));
+    panel->setBackground(SVG::load(assetPlugin(pluginInstance, "res/DTMF.svg")));
     addChild(panel);
   }
 
@@ -29,5 +29,4 @@ DTMFWidget::DTMFWidget(DTMFModule *module) : ModuleWidget(module) {
       Vec(18, 209), module, DTMFModule::ON_LED));
 }
 
-Model *modelDTMF = Model::create<DTMFModule, DTMFWidget>(
-    "CharredDesert", "DTMF", "DTMF", ENVELOPE_GENERATOR_TAG);
+Model *modelDTMF = Model::create<DTMFModule, DTMFWidget>("DTMF");

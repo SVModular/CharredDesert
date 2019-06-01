@@ -10,7 +10,7 @@ OscarWidget::OscarWidget(OscarModule *module) : ModuleWidget(module) {
   {
     SVGPanel *panel = new SVGPanel();
     panel->box.size = box.size;
-    panel->setBackground(SVG::load(assetPlugin(plugin, "res/Oscar.svg")));
+    panel->setBackground(SVG::load(assetPlugin(pluginInstance, "res/Oscar.svg")));
     addChild(panel);
   }
 
@@ -53,5 +53,4 @@ OscarWidget::OscarWidget(OscarModule *module) : ModuleWidget(module) {
                                          OscarModule::AUDIO_OUTPUT3));
 }
 
-Model *modelOscar = Model::create<OscarModule, OscarWidget>(
-    "CharredDesert", "Oscar", "Oscar", OSCILLATOR_TAG, WAVESHAPER_TAG);
+Model *modelOscar = Model::create<OscarModule, OscarWidget>("Oscar");

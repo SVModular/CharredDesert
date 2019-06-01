@@ -13,7 +13,7 @@ CVWidget::CVWidget(CVModule *module) : ModuleWidget(module) {
   {
     SVGPanel *panel = new SVGPanel();
     panel->box.size = box.size;
-    panel->setBackground(SVG::load(assetPlugin(plugin, "res/CV.svg")));
+    panel->setBackground(SVG::load(assetPlugin(pluginInstance, "res/CV.svg")));
     addChild(panel);
   }
 
@@ -33,5 +33,4 @@ CVWidget::CVWidget(CVModule *module) : ModuleWidget(module) {
   }
 }
 
-Model *modelCV = Model::create<CVModule, CVWidget>("CharredDesert", "CV",
-                                                      "CV", LOGIC_TAG);
+Model *modelCV = Model::create<CVModule, CVWidget>("CV");

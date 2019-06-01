@@ -13,7 +13,7 @@ NoiseWidget::NoiseWidget(NoiseModule *module) : ModuleWidget(module) {
   {
     SVGPanel *panel = new SVGPanel();
     panel->box.size = box.size;
-    panel->setBackground(SVG::load(assetPlugin(plugin, "res/Noise.svg")));
+    panel->setBackground(SVG::load(assetPlugin(pluginInstance, "res/Noise.svg")));
     addChild(panel);
   }
 
@@ -28,5 +28,4 @@ NoiseWidget::NoiseWidget(NoiseModule *module) : ModuleWidget(module) {
       Vec(18, 209), module, NoiseModule::ON_LED));
 }
 
-Model *modelNoise = Model::create<NoiseModule, NoiseWidget>(
-    "CharredDesert", "Noise", "Noise", NOISE_TAG);
+Model *modelNoise = Model::create<NoiseModule, NoiseWidget>("Noise");

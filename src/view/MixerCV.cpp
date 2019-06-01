@@ -17,7 +17,7 @@ MixerCVWidget::MixerCVWidget(MixerCVModule *module) : ModuleWidget(module) {
   {
     SVGPanel *panel = new SVGPanel();
     panel->box.size = box.size;
-    panel->setBackground(SVG::load(assetPlugin(plugin, "res/MixerCV.svg")));
+    panel->setBackground(SVG::load(assetPlugin(pluginInstance, "res/MixerCV.svg")));
     addChild(panel);
   }
 
@@ -190,5 +190,4 @@ MixerCVWidget::MixerCVWidget(MixerCVModule *module) : ModuleWidget(module) {
                                 MixerCVModule::MAIN_R_MUTE));
 }
 
-Model *modelMixerCV = Model::create<MixerCVModule, MixerCVWidget>("CharredDesert", "Mixer CV",
-                                                      "Mixer CV", MIXER_TAG);
+Model *modelMixerCV = Model::create<MixerCVModule, MixerCVWidget>("Mixer CV");

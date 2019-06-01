@@ -13,7 +13,7 @@ NotWidget::NotWidget(NotModule *module) : ModuleWidget(module) {
   {
     SVGPanel *panel = new SVGPanel();
     panel->box.size = box.size;
-    panel->setBackground(SVG::load(assetPlugin(plugin, "res/Not.svg")));
+    panel->setBackground(SVG::load(assetPlugin(pluginInstance, "res/Not.svg")));
     addChild(panel);
   }
 
@@ -26,5 +26,4 @@ NotWidget::NotWidget(NotModule *module) : ModuleWidget(module) {
                                  NotModule::OUTPUT));
 }
 
-Model *modelNot = Model::create<NotModule, NotWidget>("CharredDesert", "Not",
-                                                      "Not", LOGIC_TAG);
+Model *modelNot = Model::create<NotModule, NotWidget>("Not");

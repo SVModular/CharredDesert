@@ -14,7 +14,7 @@ CarbonWidget::CarbonWidget(CarbonModule *module) : ModuleWidget(module) {
   {
     SVGPanel *panel = new SVGPanel();
     panel->box.size = box.size;
-    panel->setBackground(SVG::load(assetPlugin(plugin, "res/Carbon.svg")));
+    panel->setBackground(SVG::load(assetPlugin(pluginInstance, "res/Carbon.svg")));
     addChild(panel);
   }
 
@@ -43,4 +43,4 @@ CarbonWidget::CarbonWidget(CarbonModule *module) : ModuleWidget(module) {
   addOutput(Port::create<CDPort>(Vec(17.5, 210), Port::OUTPUT, module, CarbonModule::AUDIO_OUTPUT));
 }
 
-Model *modelCarbon = Model::create<CarbonModule, CarbonWidget>("CharredDesert", "Carbon", "Carbon", FILTER_TAG);
+Model *modelCarbon = Model::create<CarbonModule, CarbonWidget>("Carbon", "Carbon");
