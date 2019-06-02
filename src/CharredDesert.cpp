@@ -5,10 +5,6 @@ Plugin *pluginInstance;
 
 void init(rack::Plugin *p) {
   pluginInstance = p;
-  // This is the unique identifier for your plugin
-  p->website = "https://github.com/JerrySievert/CharredDesert";
-  p->manual = "https://github.com/JerrySievert/CharredDesert/blob/master/docs/"
-              "README.md";
 
   p->addModel(modelDTMF);
   p->addModel(modelNoise);

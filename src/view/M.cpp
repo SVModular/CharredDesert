@@ -1,6 +1,5 @@
 #include "../controller/M.hpp"
 
-#include "../../deps/rack-components/screws.hpp"
 #include "components.hpp"
 
 struct MWidget : ModuleWidget {
@@ -19,18 +18,18 @@ MWidget::MWidget(MModule *module) : ModuleWidget(module) {
 
 
   for (int i = 0; i < M_COUNT; i++) {
-    addInput(Port::create<CDPort>(Vec(3, 30 + (190 * i)), Port::INPUT, module,
+    addInput(createPort<CDPort>(Vec(3, 30 + (190 * i)), PortWidget::INPUT, module,
                                    MModule::IN1 + i));
 
-    addInput(Port::create<CDPort>(Vec(3, 65 + (190 * i)), Port::INPUT, module,
+    addInput(createPort<CDPort>(Vec(3, 65 + (190 * i)), PortWidget::INPUT, module,
                                    MModule::IN2 + i));
 
-    addParam(ParamWidget::create<LightKnobSmall>(Vec(5, 102 + (190 * i)), module, MModule::KNOB + i,
+    addParam(createParam<LightKnobSmall>(Vec(5, 102 + (190 * i)), module, MModule::KNOB + i,
                                        0.0f, 1.0f, 0.5f));
 
-    addOutput(Port::create<CDPort>(Vec(3, 140 + (190 * i)), Port::OUTPUT, module,
+    addOutput(createPort<CDPort>(Vec(3, 140 + (190 * i)), PortWidget::OUTPUT, module,
                                    MModule::OUT + i));
   }
 }
 
-Model *modelM = Model::create<MModule, MWidget>("M");
+Model *modelM = createModel<MModule, MWidget>("M");

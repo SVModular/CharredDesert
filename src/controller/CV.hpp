@@ -18,7 +18,7 @@ struct CVModule : Module {
 
   SynthDevKit::CV *cv[CV_COUNT];
 
-  json_t *toJson() override {
+  json_t *dataToJson() override {
     json_t *rootJ = json_object();
 
     json_t *arr = json_array();
@@ -32,7 +32,7 @@ struct CVModule : Module {
     return rootJ;
   }
 
-  void fromJson(json_t *rootJ) override {
+  void dataFromJson(json_t *rootJ) override {
     json_t *switchJ = json_object_get(rootJ, "switches");
 
     if (switchJ && json_is_array(switchJ)) {

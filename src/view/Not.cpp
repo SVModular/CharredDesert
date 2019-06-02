@@ -1,6 +1,5 @@
 #include "../controller/Not.hpp"
 
-#include "../../deps/rack-components/screws.hpp"
 #include "components.hpp"
 
 struct NotWidget : ModuleWidget {
@@ -19,11 +18,11 @@ NotWidget::NotWidget(NotModule *module) : ModuleWidget(module) {
 
 
   addInput(
-      Port::create<CDPort>(Vec(10, 35), Port::INPUT, module, NotModule::INPUT));
-  addParam(ParamWidget::create<CKSS>(Vec(15, 95), module, NotModule::SWITCH,
+      createPort<CDPort>(Vec(10, 35), PortWidget::INPUT, module, NotModule::INPUT));
+  addParam(createParam<CKSS>(Vec(15, 95), module, NotModule::SWITCH,
                                      0.0, 1.0, 1.0));
-  addOutput(Port::create<CDPort>(Vec(10, 135), Port::OUTPUT, module,
+  addOutput(createPort<CDPort>(Vec(10, 135), PortWidget::OUTPUT, module,
                                  NotModule::OUTPUT));
 }
 
-Model *modelNot = Model::create<NotModule, NotWidget>("Not");
+Model *modelNot = createModel<NotModule, NotWidget>("Not");

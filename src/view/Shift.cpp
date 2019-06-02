@@ -1,6 +1,5 @@
 #include "../controller/Shift.hpp"
 
-#include "../../deps/rack-components/screws.hpp"
 #include "components.hpp"
 
 struct ShiftWidget : ModuleWidget {
@@ -18,17 +17,17 @@ ShiftWidget::ShiftWidget(ShiftModule *module) : ModuleWidget(module) {
   }
 
 
-  addInput(Port::create<CDPort>(Vec(17.5, 35), Port::INPUT, module,
+  addInput(createPort<CDPort>(Vec(17.5, 35), PortWidget::INPUT, module,
                                 ShiftModule::INPUT));
-  addParam(ParamWidget::create<CKSS>(Vec(22.5, 95), module, ShiftModule::SWITCH,
+  addParam(createParam<CKSS>(Vec(22.5, 95), module, ShiftModule::SWITCH,
                                      0.0f, 1.0f, 0.0f));
 
-  addParam(ParamWidget::create<LightKnob>(
+  addParam(createParam<LightKnob>(
       Vec(28.5, 154.5), module, ShiftModule::KNOB, -5.0f, 5.0f, 0.0f));
-  addInput(Port::create<CDPort>(Vec(4, 160), Port::INPUT, module,
+  addInput(createPort<CDPort>(Vec(4, 160), PortWidget::INPUT, module,
                                 ShiftModule::SHIFT));
-  addOutput(Port::create<CDPort>(Vec(17.5, 211), Port::OUTPUT, module,
+  addOutput(createPort<CDPort>(Vec(17.5, 211), PortWidget::OUTPUT, module,
                                  ShiftModule::OUTPUT));
 }
 
-Model *modelShift = Model::create<ShiftModule, ShiftWidget>("Shift");
+Model *modelShift = createModel<ShiftModule, ShiftWidget>("Shift");

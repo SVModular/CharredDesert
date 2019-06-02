@@ -1,6 +1,5 @@
 #include "../controller/Noise.hpp"
 
-#include "../../deps/rack-components/screws.hpp"
 #include "components.hpp"
 
 struct NoiseWidget : ModuleWidget {
@@ -18,14 +17,14 @@ NoiseWidget::NoiseWidget(NoiseModule *module) : ModuleWidget(module) {
   }
 
 
-  addInput(Port::create<CDPort>(Vec(10, 35), Port::INPUT, module,
+  addInput(createPort<CDPort>(Vec(10, 35), PortWidget::INPUT, module,
                                 NoiseModule::CV_INPUT));
-  addParam(ParamWidget::create<CKSS>(Vec(15, 95), module,
+  addParam(createParam<CKSS>(Vec(15, 95), module,
                                      NoiseModule::NOISE_SWITCH, 0.0, 1.0, 1.0));
-  addOutput(Port::create<CDPort>(Vec(10, 135), Port::OUTPUT, module,
+  addOutput(createPort<CDPort>(Vec(10, 135), PortWidget::OUTPUT, module,
                                  NoiseModule::AUDIO_OUTPUT));
-  addChild(ModuleLightWidget::create<MediumLight<RedLight>>(
+  addChild(createLight<MediumLight<RedLight>>(
       Vec(18, 209), module, NoiseModule::ON_LED));
 }
 
-Model *modelNoise = Model::create<NoiseModule, NoiseWidget>("Noise");
+Model *modelNoise = createModel<NoiseModule, NoiseWidget>("Noise");

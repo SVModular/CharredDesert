@@ -1,7 +1,5 @@
 #include "../controller/DTMF.hpp"
 
-#include "../../deps/rack-components/jacks.hpp"
-#include "../../deps/rack-components/screws.hpp"
 #include "components.hpp"
 
 struct DTMFWidget : ModuleWidget {
@@ -19,14 +17,14 @@ DTMFWidget::DTMFWidget(DTMFModule *module) : ModuleWidget(module) {
   }
 
 
-  addInput(Port::create<CDPort>(Vec(10, 35), Port::INPUT, module,
+  addInput(createPort<CDPort>(Vec(10, 35), PortWidget::INPUT, module,
                                 DTMFModule::CV_INPUT));
-  addInput(Port::create<CDPort>(Vec(10, 85), Port::INPUT, module,
+  addInput(createPort<CDPort>(Vec(10, 85), PortWidget::INPUT, module,
                                 DTMFModule::VOCT_INPUT));
-  addOutput(Port::create<CDPort>(Vec(10, 135), Port::OUTPUT, module,
+  addOutput(createPort<CDPort>(Vec(10, 135), PortWidget::OUTPUT, module,
                                  DTMFModule::AUDIO_OUTPUT));
-  addChild(ModuleLightWidget::create<MediumLight<RedLight>>(
+  addChild(createLight<MediumLight<RedLight>>(
       Vec(18, 209), module, DTMFModule::ON_LED));
 }
 
-Model *modelDTMF = Model::create<DTMFModule, DTMFWidget>("DTMF");
+Model *modelDTMF = createModel<DTMFModule, DTMFWidget>("DTMF");

@@ -1,6 +1,5 @@
 #include "../controller/CV.hpp"
 
-#include "../../deps/rack-components/screws.hpp"
 #include "components.hpp"
 
 struct CVWidget : ModuleWidget {
@@ -19,18 +18,18 @@ CVWidget::CVWidget(CVModule *module) : ModuleWidget(module) {
 
 
   for (int i = 0; i < CV_COUNT; i++) {
-    addParam(ParamWidget::create<CDLEDBezel>(Vec(4, 35 + (190 * i)), module,
+    addParam(createParam<CDLEDBezel>(Vec(4, 35 + (190 * i)), module,
                                           CVModule::SWITCH + i, 0.0f,
                                           1.0f, 0.0f));
-    addChild(ModuleLightWidget::create<CDButtonLight<GreenLight>>(
+    addChild(createLight<CDButtonLight<GreenLight>>(
         Vec(5.2, 37 + (190 * i)), module, CVModule::OUT_LIGHT + i));
 
-    addParam(ParamWidget::create<LightKnobSmall>(Vec(5, 85 + (190 * i)), module, CVModule::KNOB + i,
+    addParam(createParam<LightKnobSmall>(Vec(5, 85 + (190 * i)), module, CVModule::KNOB + i,
                                        0.0f, 10.0f, 0.0f));
 
-    addOutput(Port::create<CDPort>(Vec(3, 135 + (190 * i)), Port::OUTPUT, module,
+    addOutput(createPort<CDPort>(Vec(3, 135 + (190 * i)), PortWidget::OUTPUT, module,
                                    CVModule::OUT + i));
   }
 }
 
-Model *modelCV = Model::create<CVModule, CVWidget>("CV");
+Model *modelCV = createModel<CVModule, CVWidget>("CV");

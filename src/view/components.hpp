@@ -89,24 +89,27 @@ protected:
   CDShadow shadow = CDShadow();
 
 public:
+  CDKnob() {
+  }
+
   void setSVG(std::shared_ptr<SVG> svg) {
-    RoundKnob::setSVG(svg);
+    app::SvgKnob::setSVG(svg);
 
     shadow.setBox(box);
   }
 
-  void draw(NVGcontext *vg) override {
+  void draw(const DrawArgs &args) override {
     /** shadow */
-    shadow.draw(vg);
+    shadow.draw(args.vg);
 
     /** component */
-    FramebufferWidget::draw(vg);
+    app::SvgKnob::draw(args);
   }
 };
 
 struct LightKnob : CDKnob {
   LightKnob() {
-    setSVG(SVG::load(assetPlugin(plugin, "res/Knob.svg")));
+    setSVG(APP->window->loadSvg(assetPlugin(pluginInstance, "res/Knob.svg")));
   }
 };
 
@@ -118,19 +121,20 @@ struct LightKnobSnap : LightKnob {
 
 struct LightKnobSmall : CDKnob {
   LightKnobSmall() {
-    setSVG(SVG::load(assetPlugin(plugin, "res/KnobSmall.svg")));
+    setSVG(APP->window->loadSvg(assetPlugin(pluginInstance, "res/KnobSmall.svg")));
   }
 };
 
-struct CDPort : SVGPort {
+struct CDPort : app::SvgPort {
 private:
   CDShadow shadow = CDShadow();
 
 public:
   CDPort() {
-    background->svg = SVG::load(assetPlugin(plugin, "res/Port.svg"));
-    background->wrap();
-    box.size = background->box.size;
+    setSvg(APP->window->loadSvg(assetPlugin(pluginInstance, "res/Port.svg")));
+    //background->svg = APP->window->loadSvg(assetPlugin(pluginInstance, "res/Port.svg"));
+    //background->wrap();
+    //box.size = background->box.size;
 
     /** inherit dimensions */
     shadow.setBox(box);
@@ -138,9 +142,9 @@ public:
     shadow.setShadowPosition(2, 1);
   }
 
-  void draw(NVGcontext *vg) override {
-    shadow.draw(vg);
-    SVGPort::draw(vg);
+  void draw(const DrawArgs &args) override {
+    shadow.draw(args.vg);
+    app::SvgPort::draw(args);
   }
 };
 
@@ -160,105 +164,105 @@ public:
     shadow.setShadowPosition(2, 1);
   }
 
-  void draw (NVGcontext *vg) override {
+  void draw (const DrawArgs &args) override {
     NVGcolor red = nvgRGBA(192, 0, 0, 255);
     NVGcolor yellow = nvgRGBA(255, 192, 0, 255);
     NVGcolor green = nvgRGBA(0, 192, 0, 255);
     NVGcolor grey = nvgRGBA(80, 80, 80, 255);
     float val = *value ? *value : 0.0f;
 
-    nvgBeginPath(vg);
-    nvgRect(vg, 0, 0, 8, 8);
+    nvgBeginPath(args.vg);
+    nvgRect(args.vg, 0, 0, 8, 8);
     if (fabs(val) >= 4.5) {
-      nvgFillColor(vg, red);
+      nvgFillColor(args.vg, red);
     } else {
-      nvgFillColor(vg, grey);
+      nvgFillColor(args.vg, grey);
     }
-    nvgFill(vg);
+    nvgFill(args.vg);
 
 
-    nvgBeginPath(vg);
-    nvgRect(vg, 0, 11, 8, 8);
+    nvgBeginPath(args.vg);
+    nvgRect(args.vg, 0, 11, 8, 8);
     if (fabs(val) >= 4.0) {
-      nvgFillColor(vg, yellow);
+      nvgFillColor(args.vg, yellow);
     } else {
-      nvgFillColor(vg, grey);
+      nvgFillColor(args.vg, grey);
     }
-    nvgFill(vg);
+    nvgFill(args.vg);
 
-    nvgBeginPath(vg);
-    nvgRect(vg, 0, 22, 8, 8);
+    nvgBeginPath(args.vg);
+    nvgRect(args.vg, 0, 22, 8, 8);
     if (fabs(val) >= 3.5) {
-      nvgFillColor(vg, yellow);
+      nvgFillColor(args.vg, yellow);
     } else {
-      nvgFillColor(vg, grey);
+      nvgFillColor(args.vg, grey);
     }
-    nvgFill(vg);
+    nvgFill(args.vg);
 
-    nvgBeginPath(vg);
-    nvgRect(vg, 0, 33, 8, 8);
+    nvgBeginPath(args.vg);
+    nvgRect(args.vg, 0, 33, 8, 8);
     if (fabs(val) >= 3.0) {
-      nvgFillColor(vg, green);
+      nvgFillColor(args.vg, green);
     } else {
-      nvgFillColor(vg, grey);
+      nvgFillColor(args.vg, grey);
     }
-    nvgFill(vg);
+    nvgFill(args.vg);
 
-    nvgBeginPath(vg);
-    nvgRect(vg, 0, 44, 8, 8);
+    nvgBeginPath(args.vg);
+    nvgRect(args.vg, 0, 44, 8, 8);
     if (fabs(val) >= 2.5) {
-      nvgFillColor(vg, green);
+      nvgFillColor(args.vg, green);
     } else {
-      nvgFillColor(vg, grey);
+      nvgFillColor(args.vg, grey);
     }
-    nvgFill(vg);
+    nvgFill(args.vg);
 
-    nvgBeginPath(vg);
-    nvgRect(vg, 0, 55, 8, 8);
+    nvgBeginPath(args.vg);
+    nvgRect(args.vg, 0, 55, 8, 8);
     if (fabs(val) >= 2.0) {
-      nvgFillColor(vg, green);
+      nvgFillColor(args.vg, green);
     } else {
-      nvgFillColor(vg, grey);
+      nvgFillColor(args.vg, grey);
     }
-    nvgFill(vg);
+    nvgFill(args.vg);
 
-    nvgBeginPath(vg);
-    nvgRect(vg, 0, 66, 8, 8);
+    nvgBeginPath(args.vg);
+    nvgRect(args.vg, 0, 66, 8, 8);
     if (fabs(val) >= 1.5) {
-      nvgFillColor(vg, green);
+      nvgFillColor(args.vg, green);
     } else {
-      nvgFillColor(vg, grey);
+      nvgFillColor(args.vg, grey);
     }
-    nvgFill(vg);
+    nvgFill(args.vg);
 
-    nvgBeginPath(vg);
-    nvgRect(vg, 0, 77, 8, 8);
+    nvgBeginPath(args.vg);
+    nvgRect(args.vg, 0, 77, 8, 8);
     if (fabs(val) >= 1.0) {
-      nvgFillColor(vg, green);
+      nvgFillColor(args.vg, green);
     } else {
-      nvgFillColor(vg, grey);
+      nvgFillColor(args.vg, grey);
     }
-    nvgFill(vg);
+    nvgFill(args.vg);
 
-    nvgBeginPath(vg);
-    nvgRect(vg, 0, 88, 8, 8);
+    nvgBeginPath(args.vg);
+    nvgRect(args.vg, 0, 88, 8, 8);
     if (fabs(val) >= 0.5) {
-      nvgFillColor(vg, green);
+      nvgFillColor(args.vg, green);
     } else {
-      nvgFillColor(vg, grey);
+      nvgFillColor(args.vg, grey);
     }
-    nvgFill(vg);
+    nvgFill(args.vg);
 
-    nvgBeginPath(vg);
-    nvgRect(vg, 0, 99, 8, 8);
+    nvgBeginPath(args.vg);
+    nvgRect(args.vg, 0, 99, 8, 8);
     if (fabs(val) > 0.0) {
-      nvgFillColor(vg, green);
+      nvgFillColor(args.vg, green);
     } else {
-      nvgFillColor(vg, grey);
+      nvgFillColor(args.vg, grey);
     }
-    nvgFill(vg);
+    nvgFill(args.vg);
 
-    shadow.draw(vg);
+    shadow.draw(args.vg);
   }
 };
 
@@ -267,7 +271,7 @@ private:
   CDShadow shadow = CDShadow();
 
 public:
-  float *value;
+  float *value = NULL;
 
 	CDLEDSmallDisplay ( ) {
     value = NULL;
@@ -278,105 +282,110 @@ public:
     shadow.setShadowPosition(2, 1);
   }
 
-  void draw (NVGcontext *vg) override {
+  void draw (const DrawArgs &args) override {
     NVGcolor red = nvgRGBA(192, 0, 0, 255);
     NVGcolor yellow = nvgRGBA(255, 192, 0, 255);
     NVGcolor green = nvgRGBA(0, 192, 0, 255);
     NVGcolor grey = nvgRGBA(80, 80, 80, 255);
+
+    if (value == NULL) {
+      return;
+    }
+
     float val = *value ? *value : 0.0f;
 
-    nvgBeginPath(vg);
-    nvgRect(vg, 0, 0, 8, 6);
+    nvgBeginPath(args.vg);
+    nvgRect(args.vg, 0, 0, 8, 6);
     if (fabs(val) >= 4.5) {
-      nvgFillColor(vg, red);
+      nvgFillColor(args.vg, red);
     } else {
-      nvgFillColor(vg, grey);
+      nvgFillColor(args.vg, grey);
     }
-    nvgFill(vg);
+    nvgFill(args.vg);
 
 
-    nvgBeginPath(vg);
-    nvgRect(vg, 0, 8, 8, 6);
+    nvgBeginPath(args.vg);
+    nvgRect(args.vg, 0, 8, 8, 6);
     if (fabs(val) >= 4.0) {
-      nvgFillColor(vg, yellow);
+      nvgFillColor(args.vg, yellow);
     } else {
-      nvgFillColor(vg, grey);
+      nvgFillColor(args.vg, grey);
     }
-    nvgFill(vg);
+    nvgFill(args.vg);
 
-    nvgBeginPath(vg);
-    nvgRect(vg, 0, 16, 8, 6);
+    nvgBeginPath(args.vg);
+    nvgRect(args.vg, 0, 16, 8, 6);
     if (fabs(val) >= 3.5) {
-      nvgFillColor(vg, yellow);
+      nvgFillColor(args.vg, yellow);
     } else {
-      nvgFillColor(vg, grey);
+      nvgFillColor(args.vg, grey);
     }
-    nvgFill(vg);
+    nvgFill(args.vg);
 
-    nvgBeginPath(vg);
-    nvgRect(vg, 0, 24, 8, 6);
+    nvgBeginPath(args.vg);
+    nvgRect(args.vg, 0, 24, 8, 6);
     if (fabs(val) >= 3.0) {
-      nvgFillColor(vg, green);
+      nvgFillColor(args.vg, green);
     } else {
-      nvgFillColor(vg, grey);
+      nvgFillColor(args.vg, grey);
     }
-    nvgFill(vg);
+    nvgFill(args.vg);
 
-    nvgBeginPath(vg);
-    nvgRect(vg, 0, 32, 8, 6);
+    nvgBeginPath(args.vg);
+    nvgRect(args.vg, 0, 32, 8, 6);
     if (fabs(val) >= 2.5) {
-      nvgFillColor(vg, green);
+      nvgFillColor(args.vg, green);
     } else {
-      nvgFillColor(vg, grey);
+      nvgFillColor(args.vg, grey);
     }
-    nvgFill(vg);
+    nvgFill(args.vg);
 
-    nvgBeginPath(vg);
-    nvgRect(vg, 0, 40, 8, 6);
+    nvgBeginPath(args.vg);
+    nvgRect(args.vg, 0, 40, 8, 6);
     if (fabs(val) >= 2.0) {
-      nvgFillColor(vg, green);
+      nvgFillColor(args.vg, green);
     } else {
-      nvgFillColor(vg, grey);
+      nvgFillColor(args.vg, grey);
     }
-    nvgFill(vg);
+    nvgFill(args.vg);
 
-    nvgBeginPath(vg);
-    nvgRect(vg, 0, 48, 8, 6);
+    nvgBeginPath(args.vg);
+    nvgRect(args.vg, 0, 48, 8, 6);
     if (fabs(val) >= 1.5) {
-      nvgFillColor(vg, green);
+      nvgFillColor(args.vg, green);
     } else {
-      nvgFillColor(vg, grey);
+      nvgFillColor(args.vg, grey);
     }
-    nvgFill(vg);
+    nvgFill(args.vg);
 
-    nvgBeginPath(vg);
-    nvgRect(vg, 0, 56, 8, 6);
+    nvgBeginPath(args.vg);
+    nvgRect(args.vg, 0, 56, 8, 6);
     if (fabs(val) >= 1.0) {
-      nvgFillColor(vg, green);
+      nvgFillColor(args.vg, green);
     } else {
-      nvgFillColor(vg, grey);
+      nvgFillColor(args.vg, grey);
     }
-    nvgFill(vg);
+    nvgFill(args.vg);
 
-    nvgBeginPath(vg);
-    nvgRect(vg, 0, 64, 8, 6);
+    nvgBeginPath(args.vg);
+    nvgRect(args.vg, 0, 64, 8, 6);
     if (fabs(val) >= 0.5) {
-      nvgFillColor(vg, green);
+      nvgFillColor(args.vg, green);
     } else {
-      nvgFillColor(vg, grey);
+      nvgFillColor(args.vg, grey);
     }
-    nvgFill(vg);
+    nvgFill(args.vg);
 
-    nvgBeginPath(vg);
-    nvgRect(vg, 0, 72, 8, 6);
+    nvgBeginPath(args.vg);
+    nvgRect(args.vg, 0, 72, 8, 6);
     if (fabs(val) > 0.0) {
-      nvgFillColor(vg, green);
+      nvgFillColor(args.vg, green);
     } else {
-      nvgFillColor(vg, grey);
+      nvgFillColor(args.vg, grey);
     }
-    nvgFill(vg);
+    nvgFill(args.vg);
 
-    shadow.draw(vg);
+    shadow.draw(args.vg);
   }
 };
 
@@ -385,7 +394,7 @@ private:
   CDShadow shadow = CDShadow();
 
 public:
-  float *value;
+  float *value = NULL;
 
 	CDLEDWideDisplay ( ) {
     value = NULL;
@@ -396,119 +405,125 @@ public:
     shadow.setShadowPosition(2, 1);
   }
 
-  void draw (NVGcontext *vg) override {
+  void draw (const DrawArgs &args) override {
     NVGcolor red = nvgRGBA(192, 0, 0, 255);
     NVGcolor yellow = nvgRGBA(255, 192, 0, 255);
     NVGcolor green = nvgRGBA(0, 192, 0, 255);
     NVGcolor grey = nvgRGBA(80, 80, 80, 255);
+    if (value == NULL) {
+      return;
+    }
+
     float val = *value ? *value : 0.0f;
 
-    nvgBeginPath(vg);
-    nvgRect(vg, 0, 0, 16, 8);
+    nvgBeginPath(args.vg);
+    nvgRect(args.vg, 0, 0, 16, 8);
     if (fabs(val) >= 4.5) {
-      nvgFillColor(vg, red);
+      nvgFillColor(args.vg, red);
     } else {
-      nvgFillColor(vg, grey);
+      nvgFillColor(args.vg, grey);
     }
-    nvgFill(vg);
+    nvgFill(args.vg);
 
 
-    nvgBeginPath(vg);
-    nvgRect(vg, 0, 11, 16, 8);
+    nvgBeginPath(args.vg);
+    nvgRect(args.vg, 0, 11, 16, 8);
     if (fabs(val) >= 4.0) {
-      nvgFillColor(vg, yellow);
+      nvgFillColor(args.vg, yellow);
     } else {
-      nvgFillColor(vg, grey);
+      nvgFillColor(args.vg, grey);
     }
-    nvgFill(vg);
+    nvgFill(args.vg);
 
-    nvgBeginPath(vg);
-    nvgRect(vg, 0, 22, 16, 8);
+    nvgBeginPath(args.vg);
+    nvgRect(args.vg, 0, 22, 16, 8);
     if (fabs(val) >= 3.5) {
-      nvgFillColor(vg, yellow);
+      nvgFillColor(args.vg, yellow);
     } else {
-      nvgFillColor(vg, grey);
+      nvgFillColor(args.vg, grey);
     }
-    nvgFill(vg);
+    nvgFill(args.vg);
 
-    nvgBeginPath(vg);
-    nvgRect(vg, 0, 33, 16, 8);
+    nvgBeginPath(args.vg);
+    nvgRect(args.vg, 0, 33, 16, 8);
     if (fabs(val) >= 3.0) {
-      nvgFillColor(vg, green);
+      nvgFillColor(args.vg, green);
     } else {
-      nvgFillColor(vg, grey);
+      nvgFillColor(args.vg, grey);
     }
-    nvgFill(vg);
+    nvgFill(args.vg);
 
-    nvgBeginPath(vg);
-    nvgRect(vg, 0, 44, 16, 8);
+    nvgBeginPath(args.vg);
+    nvgRect(args.vg, 0, 44, 16, 8);
     if (fabs(val) >= 2.5) {
-      nvgFillColor(vg, green);
+      nvgFillColor(args.vg, green);
     } else {
-      nvgFillColor(vg, grey);
+      nvgFillColor(args.vg, grey);
     }
-    nvgFill(vg);
+    nvgFill(args.vg);
 
-    nvgBeginPath(vg);
-    nvgRect(vg, 0, 55, 16, 8);
+    nvgBeginPath(args.vg);
+    nvgRect(args.vg, 0, 55, 16, 8);
     if (fabs(val) >= 2.0) {
-      nvgFillColor(vg, green);
+      nvgFillColor(args.vg, green);
     } else {
-      nvgFillColor(vg, grey);
+      nvgFillColor(args.vg, grey);
     }
-    nvgFill(vg);
+    nvgFill(args.vg);
 
-    nvgBeginPath(vg);
-    nvgRect(vg, 0, 66, 16, 8);
+    nvgBeginPath(args.vg);
+    nvgRect(args.vg, 0, 66, 16, 8);
     if (fabs(val) >= 1.5) {
-      nvgFillColor(vg, green);
+      nvgFillColor(args.vg, green);
     } else {
-      nvgFillColor(vg, grey);
+      nvgFillColor(args.vg, grey);
     }
-    nvgFill(vg);
+    nvgFill(args.vg);
 
-    nvgBeginPath(vg);
-    nvgRect(vg, 0, 77, 16, 8);
+    nvgBeginPath(args.vg);
+    nvgRect(args.vg, 0, 77, 16, 8);
     if (fabs(val) >= 1.0) {
-      nvgFillColor(vg, green);
+      nvgFillColor(args.vg, green);
     } else {
-      nvgFillColor(vg, grey);
+      nvgFillColor(args.vg, grey);
     }
-    nvgFill(vg);
+    nvgFill(args.vg);
 
-    nvgBeginPath(vg);
-    nvgRect(vg, 0, 88, 16, 8);
+    nvgBeginPath(args.vg);
+    nvgRect(args.vg, 0, 88, 16, 8);
     if (fabs(val) >= 0.5) {
-      nvgFillColor(vg, green);
+      nvgFillColor(args.vg, green);
     } else {
-      nvgFillColor(vg, grey);
+      nvgFillColor(args.vg, grey);
     }
-    nvgFill(vg);
+    nvgFill(args.vg);
 
-    nvgBeginPath(vg);
-    nvgRect(vg, 0, 99, 16, 8);
+    nvgBeginPath(args.vg);
+    nvgRect(args.vg, 0, 99, 16, 8);
     if (fabs(val) > 0.0) {
-      nvgFillColor(vg, green);
+      nvgFillColor(args.vg, green);
     } else {
-      nvgFillColor(vg, grey);
+      nvgFillColor(args.vg, grey);
     }
-    nvgFill(vg);
+    nvgFill(args.vg);
 
-    shadow.draw(vg);
+    shadow.draw(args.vg);
   }
 };
 
-struct CDSlider : SVGFader {
+struct CDSlider : app::SvgSlider {
 public:
 	CDSlider() {
 		Vec margin = Vec(4, 4);
 		maxHandlePos = Vec(1.3, -7).plus(margin);
 		minHandlePos = Vec(1.3, 76).plus(margin);
-		background->svg = SVG::load(assetPlugin(plugin,"res/CDSlider.svg"));
+    setBackgroundSvg(APP->window->loadSvg(assetPlugin(pluginInstance,"res/CDSlider.svg")));
+//		background->svg = APP->window->loadSvg(assetPlugin(pluginInstance,"res/CDSlider.svg"));
 		background->wrap();
 		background->box.pos = margin;
 		box.size = background->box.size.plus(margin.mult(2));
-		handle->svg = SVG::load(assetPlugin(plugin,"res/CDSliderHandle.svg"));
+//		handle->svg = APP->window->loadSvg(assetPlugin(pluginInstance,"res/CDSliderHandle.svg"));
+    setHandleSvg(APP->window->loadSvg(assetPlugin(pluginInstance,"res/CDSliderHandle.svg")));
 		handle->wrap();
   }
 };
@@ -522,11 +537,11 @@ public:
     shadow.setBox(box);
   }
 
-  void draw(NVGcontext *vg) override {
+  void draw(const DrawArgs &args) override {
     /** shadow */
-    shadow.draw(vg);
+    shadow.draw(args.vg);
 
-    LEDBezel::draw(vg);
+    LEDBezel::draw(args);
   }
 };
 

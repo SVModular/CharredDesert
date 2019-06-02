@@ -1,6 +1,5 @@
 #include "../controller/Pan.hpp"
 
-#include "../../deps/rack-components/screws.hpp"
 #include "components.hpp"
 
 struct PanWidget : ModuleWidget {
@@ -18,16 +17,16 @@ PanWidget::PanWidget(PanModule *module) : ModuleWidget(module) {
   }
 
 
-  addInput(Port::create<CDPort>(Vec(17.5, 35), Port::INPUT, module,
+  addInput(createPort<CDPort>(Vec(17.5, 35), PortWidget::INPUT, module,
                                 PanModule::AUDIO_INPUT));
-  addParam(ParamWidget::create<LightKnob>(
+  addParam(createParam<LightKnob>(
       Vec(28.5, 79.5), module, PanModule::PAN_PARAM, -5.0f, 5.0f, 0.0f));
-  addInput(Port::create<CDPort>(Vec(4, 85), Port::INPUT, module,
+  addInput(createPort<CDPort>(Vec(4, 85), PortWidget::INPUT, module,
                                 PanModule::PAN_INPUT));
-  addOutput(Port::create<CDPort>(Vec(17.5, 135), Port::OUTPUT, module,
+  addOutput(createPort<CDPort>(Vec(17.5, 135), PortWidget::OUTPUT, module,
                                  PanModule::AUDIO_OUTPUT1));
-  addOutput(Port::create<CDPort>(Vec(17.5, 185), Port::OUTPUT, module,
+  addOutput(createPort<CDPort>(Vec(17.5, 185), PortWidget::OUTPUT, module,
                                  PanModule::AUDIO_OUTPUT2));
 }
 
-Model *modelPan = Model::create<PanModule, PanWidget>("Pan");
+Model *modelPan = createModel<PanModule, PanWidget>("Pan");

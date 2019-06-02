@@ -78,7 +78,7 @@ struct MixerCVModule : Module {
   SynthDevKit::CV *channel_mute[MIXER_CHANNELS];
   SynthDevKit::CV *channel_solo[MIXER_CHANNELS];
 
-  json_t *toJson() override {
+  json_t *dataToJson() override {
     json_t *rootJ = json_object();
 
     json_t *m = json_array();
@@ -97,7 +97,7 @@ struct MixerCVModule : Module {
     return rootJ;
   }
 
-  void fromJson(json_t *rootJ) override {
+  void dataFromJson(json_t *rootJ) override {
     json_t *m = json_object_get(rootJ, "mute");
     json_t *s = json_object_get(rootJ, "solo");
 

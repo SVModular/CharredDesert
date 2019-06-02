@@ -10,5 +10,5 @@ struct CarbonModule : Module {
   CarbonModule();
   void step() override;
   MoogFilter filter;
-  float frequency;
+  float frequency = 0.0f;
 };
