@@ -29,7 +29,9 @@ Oscar2Widget::Oscar2Widget(Oscar2Module *module) : ModuleWidget(module) {
   // wave selection - left
   {
     WaveSelect *waveSelect = new WaveSelect();
-    waveSelect->value = &module->wave1;
+    if (module) {
+      waveSelect->value = &module->wave1;
+    }
     waveSelect->box.pos = Vec(9.5, 33);
     waveSelect->box.size = Vec(10, 10);
     addChild(waveSelect);
@@ -73,7 +75,9 @@ Oscar2Widget::Oscar2Widget(Oscar2Module *module) : ModuleWidget(module) {
   // wave selection - right
   {
     WaveSelect *waveSelect = new WaveSelect();
-    waveSelect->value = &module->wave2;
+    if (module) {
+      waveSelect->value = &module->wave2;
+    }
     waveSelect->box.pos = Vec(55, 33);
     waveSelect->box.size = Vec(10, 10);
     addChild(waveSelect);
@@ -131,4 +135,4 @@ Oscar2Widget::Oscar2Widget(Oscar2Module *module) : ModuleWidget(module) {
                                  Oscar2Module::AUDIO_OUTPUT));
 }
 
-Model *modelOscar2 = createModel<Oscar2Module, Oscar2Widget>("Oscar^2");
+Model *modelOscar2 = createModel<Oscar2Module, Oscar2Widget>("Oscar2");

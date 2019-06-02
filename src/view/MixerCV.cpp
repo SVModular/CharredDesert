@@ -196,4 +196,4 @@ MixerCVWidget::MixerCVWidget(MixerCVModule *module) : ModuleWidget(module) {
                                 MixerCVModule::MAIN_R_MUTE));
 }
 
-Model *modelMixerCV = createModel<MixerCVModule, MixerCVWidget>("Mixer CV");
+Model *modelMixerCV = createModel<MixerCVModule, MixerCVWidget>("MixerCV");

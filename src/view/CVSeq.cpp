@@ -52,4 +52,4 @@ CVSeqWidget::CVSeqWidget(CVSeqModule *module) : ModuleWidget(module) {
       Vec(36, 259), module, CVSeqModule::LED4));
 }
 
-Model *modelCVSeq = createModel<CVSeqModule, CVSeqWidget>("CV Sequencer");
+Model *modelCVSeq = createModel<CVSeqModule, CVSeqWidget>("CVSequencer");
