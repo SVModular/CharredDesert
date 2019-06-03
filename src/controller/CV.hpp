@@ -12,7 +12,7 @@ struct CVModule : Module {
 
   CVModule();
 
-  void step() override;
+  void process(const ProcessArgs &args) override;
 
   bool on[CV_COUNT];
 

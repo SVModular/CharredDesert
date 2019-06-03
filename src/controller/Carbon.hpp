@@ -8,7 +8,7 @@ struct CarbonModule : Module {
   enum LightIds { NUM_LIGHTS };
 
   CarbonModule();
-  void step() override;
+  void process(const ProcessArgs &args) override;
   MoogFilter filter;
   float frequency = 0.0f;
 };

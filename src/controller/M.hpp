@@ -14,5 +14,5 @@ struct MModule : Module {
 
   MModule();
 
-  void step() override;
+  void process(const ProcessArgs &args) override;
 };

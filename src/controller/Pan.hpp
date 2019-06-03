@@ -9,5 +9,5 @@ struct PanModule : Module {
   enum LightIds { NUM_LIGHTS };
 
   PanModule();
-  void step() override;
+  void process(const ProcessArgs &args) override;
 };

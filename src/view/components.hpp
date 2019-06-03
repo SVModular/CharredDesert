@@ -109,7 +109,7 @@ public:
 
 struct LightKnob : CDKnob {
   LightKnob() {
-    setSVG(APP->window->loadSvg(assetPlugin(pluginInstance, "res/Knob.svg")));
+    setSVG(APP->window->loadSvg(asset::plugin(pluginInstance, "res/Knob.svg")));
   }
 };
 
@@ -121,7 +121,7 @@ struct LightKnobSnap : LightKnob {
 
 struct LightKnobSmall : CDKnob {
   LightKnobSmall() {
-    setSVG(APP->window->loadSvg(assetPlugin(pluginInstance, "res/KnobSmall.svg")));
+    setSVG(APP->window->loadSvg(asset::plugin(pluginInstance, "res/KnobSmall.svg")));
   }
 };
 
@@ -131,10 +131,7 @@ private:
 
 public:
   CDPort() {
-    setSvg(APP->window->loadSvg(assetPlugin(pluginInstance, "res/Port.svg")));
-    //background->svg = APP->window->loadSvg(assetPlugin(pluginInstance, "res/Port.svg"));
-    //background->wrap();
-    //box.size = background->box.size;
+    setSvg(APP->window->loadSvg(asset::plugin(pluginInstance, "res/Port.svg")));
 
     /** inherit dimensions */
     shadow.setBox(box);
@@ -517,13 +514,11 @@ public:
 		Vec margin = Vec(4, 4);
 		maxHandlePos = Vec(1.3, -7).plus(margin);
 		minHandlePos = Vec(1.3, 76).plus(margin);
-    setBackgroundSvg(APP->window->loadSvg(assetPlugin(pluginInstance,"res/CDSlider.svg")));
-//		background->svg = APP->window->loadSvg(assetPlugin(pluginInstance,"res/CDSlider.svg"));
+    setBackgroundSvg(APP->window->loadSvg(asset::plugin(pluginInstance,"res/CDSlider.svg")));
 		background->wrap();
 		background->box.pos = margin;
 		box.size = background->box.size.plus(margin.mult(2));
-//		handle->svg = APP->window->loadSvg(assetPlugin(pluginInstance,"res/CDSliderHandle.svg"));
-    setHandleSvg(APP->window->loadSvg(assetPlugin(pluginInstance,"res/CDSliderHandle.svg")));
+    setHandleSvg(APP->window->loadSvg(asset::plugin(pluginInstance,"res/CDSliderHandle.svg")));
 		handle->wrap();
   }
 };
@@ -548,7 +543,6 @@ public:
 template <typename BASE>
 struct CDButtonLight : BASE {
 	CDButtonLight() {
-	  //this->box.size = Vec(20.0, 20.0);
 	  this->box.size = mm2px(Vec(6.0, 6.0));
 	}
 };

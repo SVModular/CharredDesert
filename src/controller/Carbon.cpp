@@ -1,21 +1,24 @@
 #include "Carbon.hpp"
 
 #include <cmath>
-CarbonModule::CarbonModule()
-    : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
+
+CarbonModule::CarbonModule() {
+  config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
+  configParam(CarbonModule::FREQ_PARAM, 20.0f, 6000.0f, (6000 - 20) / 2);
+  configParam(CarbonModule::REZ_PARAM, 0.0f, 4.0f, 2.0f);
   frequency = 0.0f;
   filter.clear();
 }
 
-void CarbonModule::step() {
+void CarbonModule::process(const ProcessArgs &args) {
   // update the display no matter what
-  frequency = clamp((inputs[FREQ_INPUT].active ? inputs[FREQ_INPUT].value * 1000 : 0) + params[FREQ_PARAM].value, 20.0f, 6000.0f);
+  frequency = clamp((inputs[FREQ_INPUT].isConnected() ? inputs[FREQ_INPUT].getVoltage() * 1000 : 0) + params[FREQ_PARAM].getValue(), 20.0f, 6000.0f);
 
-  if (inputs[AUDIO_INPUT].active && outputs[AUDIO_OUTPUT].active) {
-    float audio_in = inputs[AUDIO_INPUT].value / 5.0f;
-    float res = clamp((inputs[REZ_INPUT].active ? inputs[REZ_INPUT].value / 10 : 0) + params[REZ_PARAM].value, 0.1f, 4.0f);
+  if (inputs[AUDIO_INPUT].isConnected() && outputs[AUDIO_OUTPUT].isConnected()) {
+    float audio_in = inputs[AUDIO_INPUT].getVoltage() / 5.0f;
+    float res = clamp((inputs[REZ_INPUT].isConnected() ? inputs[REZ_INPUT].getVoltage() / 10 : 0) + params[REZ_PARAM].getValue(), 0.1f, 4.0f);
 
-    filter.setSamplerate(engineGetSampleRate());
+    filter.setSamplerate(args.sampleRate);
     filter.setCoefficients(frequency, res);
 
     float out = 0.0f;
@@ -27,8 +30,8 @@ void CarbonModule::step() {
       out = 0.0f;
       filter.clear();
     }
-    outputs[AUDIO_OUTPUT].value = 5.0f * out;
+    outputs[AUDIO_OUTPUT].setVoltage(5.0f * out);
   } else {
-    outputs[AUDIO_OUTPUT].value = 0.0f;
+    outputs[AUDIO_OUTPUT].setVoltage(0.0f);
   }
 }

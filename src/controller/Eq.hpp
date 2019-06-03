@@ -10,7 +10,7 @@ struct EqModule : Module {
   enum LightIds { NUM_LIGHTS };
 
   EqModule();
-  void step() override;
+  void process(const ProcessArgs &args) override;
   float paramValue (uint16_t, uint16_t, float, float);
   float frequency = 7000.0f;
   float sampleRate;

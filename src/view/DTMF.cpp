@@ -6,22 +6,18 @@ struct DTMFWidget : ModuleWidget {
   DTMFWidget(DTMFModule *module);
 };
 
-DTMFWidget::DTMFWidget(DTMFModule *module) : ModuleWidget(module) {
+DTMFWidget::DTMFWidget(DTMFModule *module) {
+  setModule(module);
   box.size = Vec(3 * RACK_GRID_WIDTH, RACK_GRID_HEIGHT);
 
-  {
-    SVGPanel *panel = new SVGPanel();
-    panel->box.size = box.size;
-    panel->setBackground(SVG::load(assetPlugin(pluginInstance, "res/DTMF.svg")));
-    addChild(panel);
-  }
+  setPanel(APP->window->loadSvg(asset::plugin(pluginInstance, "res/DTMF.svg")));
 
 
-  addInput(createPort<CDPort>(Vec(10, 35), PortWidget::INPUT, module,
+  addInput(createInput<CDPort>(Vec(10, 35), module,
                                 DTMFModule::CV_INPUT));
-  addInput(createPort<CDPort>(Vec(10, 85), PortWidget::INPUT, module,
+  addInput(createInput<CDPort>(Vec(10, 85), module,
                                 DTMFModule::VOCT_INPUT));
-  addOutput(createPort<CDPort>(Vec(10, 135), PortWidget::OUTPUT, module,
+  addOutput(createOutput<CDPort>(Vec(10, 135), module,
                                  DTMFModule::AUDIO_OUTPUT));
   addChild(createLight<MediumLight<RedLight>>(
       Vec(18, 209), module, DTMFModule::ON_LED));

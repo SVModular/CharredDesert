@@ -17,7 +17,7 @@ struct CVSeqModule : Module {
   enum LightIds { LED1, LED2, LED3, LED4, NUM_LIGHTS };
 
   CVSeqModule();
-  void step() override;
+  void process(const ProcessArgs &args) override;
 
   SynthDevKit::CV *cv;
   uint8_t currentStep;

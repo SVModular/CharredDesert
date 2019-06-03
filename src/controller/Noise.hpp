@@ -13,7 +13,7 @@ struct NoiseModule : Module {
 
   NoiseModule();
 
-  void step() override;
+  void process(const ProcessArgs &args) override;
 
   SynthDevKit::WhiteNoise *wn;
   SynthDevKit::PinkNoise *pn;

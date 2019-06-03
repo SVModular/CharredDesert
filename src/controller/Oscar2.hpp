@@ -43,7 +43,7 @@ struct Oscar2Module : Module {
 
   Oscar2Module();
 
-  void step() override;
+  void process(const ProcessArgs &args) override;
 
   float shift1 = 0.0f;
   float shift2 = 0.0f;

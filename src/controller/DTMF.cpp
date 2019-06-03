@@ -1,7 +1,7 @@
 #include "DTMF.hpp"
 
-DTMFModule::DTMFModule()
-    : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
+DTMFModule::DTMFModule() {
+  config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
   cv = new SynthDevKit::CV(1.7f);
   dtmf = new SynthDevKit::DTMF(44100);
 }
@@ -16,9 +16,9 @@ char DTMFModule::getTone(float current) {
   return ' ';
 }
 
-void DTMFModule::step() {
-  float cv_in = inputs[CV_INPUT].value;
-  float voct_in = inputs[VOCT_INPUT].value;
+void DTMFModule::process(const ProcessArgs &args) {
+  float cv_in = inputs[CV_INPUT].getVoltage();
+  float voct_in = inputs[VOCT_INPUT].getVoltage();
 
   cv->update(cv_in);
 
@@ -30,7 +30,7 @@ void DTMFModule::step() {
     char tone = getTone(voct_in);
     dtmf->setTone(tone);
 
-    outputs[AUDIO_OUTPUT].value = dtmf->stepValue();
+    outputs[AUDIO_OUTPUT].setVoltage(dtmf->stepValue());
 
     if (outputs[AUDIO_OUTPUT].value == 0) {
       lights[ON_LED].value = 0;
@@ -38,7 +38,7 @@ void DTMFModule::step() {
       lights[ON_LED].value = 1;
     }
   } else {
-    outputs[AUDIO_OUTPUT].value = 0;
+    outputs[AUDIO_OUTPUT].setVoltage(0);
     lights[ON_LED].value = 0;
   }
 }

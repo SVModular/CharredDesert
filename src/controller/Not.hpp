@@ -10,5 +10,5 @@ struct NotModule : Module {
 
   NotModule();
 
-  void step() override;
+  void process(const ProcessArgs &args) override;
 };

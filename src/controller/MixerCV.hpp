@@ -54,7 +54,7 @@ struct MixerCVModule : Module {
   };
 
   MixerCVModule();
-  void step() override;
+  void process(const ProcessArgs &args) override;
 
   float channel_led_l[MIXER_CHANNELS];
   float channel_led_r[MIXER_CHANNELS];

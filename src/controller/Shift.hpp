@@ -9,5 +9,5 @@ struct ShiftModule : Module {
   enum LightIds { NUM_LIGHTS };
 
   ShiftModule();
-  void step() override;
+  void process(const ProcessArgs &args) override;
 };

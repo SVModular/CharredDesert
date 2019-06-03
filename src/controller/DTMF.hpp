@@ -12,7 +12,7 @@ struct DTMFModule : Module {
 
   DTMFModule();
 
-  void step() override;
+  void process(const ProcessArgs &args) override;
 
   char getTone(float);
 
