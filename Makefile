@@ -24,8 +24,8 @@ SOURCES += $(wildcard src/*.cpp) $(CONTROLLERS) $(VIEWS) $(SYNTHDEVKIT)
 DISTRIBUTABLES += $(wildcard LICENSE*) res deps/rack-components/res
 
 # Must include the VCV plugin Makefile framework
-#RACK_DIR ?= ../..
-RACK_DIR ?= /Users/jerry/work/Rack
+RACK_DIR ?= ../..
+#RACK_DIR ?= /Users/jerry/work/Rack
 include $(RACK_DIR)/plugin.mk
 
 # Sources to test for ArpTest - this will usually only include your controllers
