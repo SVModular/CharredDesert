@@ -1,11 +1,11 @@
 # FLAGS will be passed to both the C and C++ compiler
 FLAGS +=
 CFLAGS +=
-CXXFLAGS += -g
+CXXFLAGS +=
 
 # Careful about linking to libraries, since you can't assume much about the user's environment and library search path.
 # Static libraries are fine.
-LDFLAGS += -g
+LDFLAGS +=
 
 # Controllers
 CONTROLLERS += $(wildcard src/controller/*.cpp)
@@ -25,7 +25,6 @@ DISTRIBUTABLES += $(wildcard LICENSE*) res deps/rack-components/res
 
 # Must include the VCV plugin Makefile framework
 RACK_DIR ?= ../..
-#RACK_DIR ?= /Users/jerry/work/Rack
 include $(RACK_DIR)/plugin.mk
 
 # Sources to test for ArpTest - this will usually only include your controllers
