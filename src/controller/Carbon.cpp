@@ -26,7 +26,7 @@ void CarbonModule::process(const ProcessArgs &args) {
     filter.process(&audio_in, &out, 1);
 
     // filter can sometimes get unstable at high frequencies, if it does, reset
-    if (isnan(out)) {
+    if (std::isnan(out)) {
       out = 0.0f;
       filter.clear();
     }
