@@ -1,6 +1,5 @@
 #include "../controller/Carbon.hpp"
 
-#include "../../deps/rack-components/display.hpp"
 #include "components.hpp"
 
 struct CarbonWidget : ModuleWidget {

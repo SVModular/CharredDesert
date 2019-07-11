@@ -15,7 +15,7 @@ CVWidget::CVWidget(CVModule *module) {
 
   for (int i = 0; i < CV_COUNT; i++) {
     addParam(createParam<CDLEDBezel>(Vec(4, 35 + (190 * i)), module,
-                                          CVModule::SWITCH));
+                                          CVModule::SWITCH + i));
 
     addChild(createLight<CDButtonLight<GreenLight>>(
         Vec(5.2, 37 + (190 * i)), module, CVModule::OUT_LIGHT + i));

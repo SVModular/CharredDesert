@@ -1,6 +1,5 @@
 #include "../controller/Eq.hpp"
 
-#include "../../deps/rack-components/display.hpp"
 #include "components.hpp"
 
 struct EqWidget : ModuleWidget {

@@ -1,6 +1,5 @@
 #include "../controller/Oscar2.hpp"
 
-#include "../../deps/rack-components/display.hpp"
 #include "components.hpp"
 
 struct Oscar2Widget : ModuleWidget {

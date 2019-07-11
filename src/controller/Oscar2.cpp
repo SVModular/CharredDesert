@@ -43,6 +43,8 @@ Oscar2Module::Oscar2Module() {
   configParam(Oscar2Module::FINE_PARAM2, -1.0f, 1.0f, 0.0f);
   configParam(Oscar2Module::RANDOM_PARAM2, 0.0f, 5.0f, 0.0f);
   configParam(Oscar2Module::INVERT_PARAM2, 0.0f, 1.0f, 1.0f);
+  configParam(Oscar2Module::MIX_PARAM, 0.0f, 10.0f, 5.0f);
+
 }
 
 void Oscar2Module::process(const ProcessArgs &args) {
@@ -108,12 +110,11 @@ void Oscar2Module::process(const ProcessArgs &args) {
 
   float left = valueForWave(osc1, wave1);
   float right = valueForWave(osc2, wave2);
+fprintf(stderr, "left: %f, right: %f => %f\n", left, right, calculateMix(inputs[MIX_INPUT].getVoltage(),
+                                        params[MIX_PARAM].getValue()));
 
-  outputs[AUDIO_OUTPUT].value =
-      5.0f * ((left * ((10 - calculateMix(inputs[MIX_INPUT].getVoltage(),
-                                          params[MIX_PARAM].getValue())) /
-                       10) +
-               (right * (calculateMix(inputs[MIX_INPUT].getVoltage(),
-                                      params[MIX_PARAM].getValue()) /
-                         10))));
+  float mixValue = calculateMix(inputs[MIX_INPUT].getVoltage(), params[MIX_PARAM].getValue());
+  float mix = (right * (mixValue / 10)) + (left * (1 - (mixValue / 10)));
+
+  outputs[AUDIO_OUTPUT].setVoltage(5.0f * mix);
 }
