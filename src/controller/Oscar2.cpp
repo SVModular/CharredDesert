@@ -110,8 +110,6 @@ void Oscar2Module::process(const ProcessArgs &args) {
 
   float left = valueForWave(osc1, wave1);
   float right = valueForWave(osc2, wave2);
-fprintf(stderr, "left: %f, right: %f => %f\n", left, right, calculateMix(inputs[MIX_INPUT].getVoltage(),
-                                        params[MIX_PARAM].getValue()));
 
   float mixValue = calculateMix(inputs[MIX_INPUT].getVoltage(), params[MIX_PARAM].getValue());
   float mix = (right * (mixValue / 10)) + (left * (1 - (mixValue / 10)));
