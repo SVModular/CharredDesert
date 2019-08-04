@@ -1,8 +1,15 @@
 #include "rack.hpp"
+#include "model/MessageBus.hpp"
 
 using namespace rack;
 
 extern Plugin *pluginInstance;
+
+struct Payload {
+  float values[8];
+};
+
+extern MessageBus<Payload> *messages;
 
 ////////////////////
 // module widgets
@@ -21,3 +28,4 @@ extern Model *modelMixer;
 extern Model *modelMixerCV;
 extern Model *modelCV;
 extern Model *modelM;
+extern Model *modelTine;

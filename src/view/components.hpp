@@ -166,7 +166,7 @@ public:
     NVGcolor yellow = nvgRGBA(255, 192, 0, 255);
     NVGcolor green = nvgRGBA(0, 192, 0, 255);
     NVGcolor grey = nvgRGBA(80, 80, 80, 255);
-    float val = *value ? *value : 0.0f;
+    float val = value ? *value : 0.0f;
 
     nvgBeginPath(args.vg);
     nvgRect(args.vg, 0, 0, 8, 8);
@@ -285,11 +285,7 @@ public:
     NVGcolor green = nvgRGBA(0, 192, 0, 255);
     NVGcolor grey = nvgRGBA(80, 80, 80, 255);
 
-    if (value == NULL) {
-      return;
-    }
-
-    float val = *value ? *value : 0.0f;
+    float val = value ? *value : 0.0f;
 
     nvgBeginPath(args.vg);
     nvgRect(args.vg, 0, 0, 8, 6);
@@ -407,11 +403,8 @@ public:
     NVGcolor yellow = nvgRGBA(255, 192, 0, 255);
     NVGcolor green = nvgRGBA(0, 192, 0, 255);
     NVGcolor grey = nvgRGBA(80, 80, 80, 255);
-    if (value == NULL) {
-      return;
-    }
 
-    float val = *value ? *value : 0.0f;
+    float val = value ? *value : 0.0f;
 
     nvgBeginPath(args.vg);
     nvgRect(args.vg, 0, 0, 16, 8);

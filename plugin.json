@@ -118,6 +118,15 @@
       "tags": [
         "Mixer"
       ]
+    },
+    {
+      "slug": "Tine",
+      "name": "Tine",
+      "description": "Voltage Based Splitter",
+      "tags": [
+        "Attenuator",
+        "Mixer"
+      ]
     }
   ]
 }

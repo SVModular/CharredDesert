@@ -2,8 +2,11 @@
 
 // The plugin-wide instance of the Plugin class
 Plugin *pluginInstance;
+MessageBus<Payload> *messages;
 
 void init(rack::Plugin *p) {
+  messages = new MessageBus<Payload>();
+
   pluginInstance = p;
 
   p->addModel(modelDTMF);
@@ -19,4 +22,5 @@ void init(rack::Plugin *p) {
   p->addModel(modelMixerCV);
   p->addModel(modelCV);
   p->addModel(modelM);
+  p->addModel(modelTine);
 }
