@@ -29,3 +29,4 @@ extern Model *modelMixerCV;
 extern Model *modelCV;
 extern Model *modelM;
 extern Model *modelTine;
+extern Model *modelK;

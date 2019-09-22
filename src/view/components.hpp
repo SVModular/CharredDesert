@@ -125,7 +125,29 @@ struct LightKnobSmall : CDKnob {
   }
 };
 
-struct CDPort : app::SvgPort {
+struct LocalPort : PortWidget {
+  widget::FramebufferWidget *fb;
+  widget::SvgWidget *sw;
+
+  LocalPort() {
+    fb = new widget::FramebufferWidget;
+    addChild(fb);
+
+    sw = new widget::SvgWidget;
+    fb->addChild(sw);
+  }
+
+  void setSvg(std::shared_ptr<Svg> svg) {
+    sw->setSvg(svg);
+    fb->box.size = sw->box.size;
+    box.size = sw->box.size;
+
+    fb->dirty = true;
+  }
+
+};
+
+struct CDPort : LocalPort {
 private:
   CDShadow shadow = CDShadow();
 
@@ -141,7 +163,7 @@ public:
 
   void draw(const DrawArgs &args) override {
     shadow.draw(args.vg);
-    app::SvgPort::draw(args);
+    PortWidget::draw(args);
   }
 };
 
