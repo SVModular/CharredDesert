@@ -10,6 +10,7 @@
   "manualUrl": "https://github.com/JerrySievert/CharredDesert/blob/master/docs/README.md",
   "sourceUrl": "https://github.com/JerrySievert/CharredDesert",
   "donateUrl": "https://paypal.me/JerrySievert",
+  "brand": "SV Modular",
   "modules": [
     {
       "slug": "DTMF",
