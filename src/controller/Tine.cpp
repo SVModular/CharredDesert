@@ -8,13 +8,8 @@ TineModule::TineModule() {
   configParam(SPLIT, 0, 10, 5);
   configParam(LOWER_ATT, -10, 10, 0);
   configParam(UPPER_ATT, -10, 10, 0);
-
-  id = messages->registerMember();
 }
 
-TineModule::~TineModule() {
-  messages->deregisterMember(id);
-}
 
 float TineModule::paramValue (uint16_t param, uint16_t input, float low, float high) {
   float current = params[param].getValue();
@@ -56,12 +51,4 @@ void TineModule::process(const ProcessArgs &args) {
       lights[UPPER_LIGHT].value = 1;
     }
   }
-
-  Payload payload;
-  payload.values[0] = outputs[LOWER_OUT].getVoltage();
-  payload.values[1] = outputs[UPPER_OUT].getVoltage();
-  Message<Payload> *message = new Message<Payload>();
-  message->value = payload;
-
-  messages->send(id, message);
 }

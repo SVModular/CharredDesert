@@ -1,5 +1,4 @@
 #include "rack.hpp"
-#include "model/MessageBus.hpp"
 
 using namespace rack;
 
@@ -9,7 +8,6 @@ struct Payload {
   float values[8];
 };
 
-extern MessageBus<Payload> *messages;
 
 ////////////////////
 // module widgets
