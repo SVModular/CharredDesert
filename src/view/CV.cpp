@@ -22,7 +22,7 @@ CVWidget::CVWidget(CVModule *module) {
 
     addParam(createParam<LightKnobSmall>(Vec(5, 85 + (190 * i)), module, CVModule::KNOB + i));
 
-    addOutput(createOutput<CDPort>(Vec(3, 135 + (190 * i)), module,
+    addOutput(createOutput<CDPort>(Vec(3, 140 + (190 * i)), module,
                                    CVModule::OUT + i));
   }
 }

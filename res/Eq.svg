@@ -32,9 +32,9 @@
   <sodipodi:namedview
      borderopacity="1"
      inkscape:zoom="2.9512404"
-     inkscape:cy="203.01357"
+     inkscape:cy="121.69183"
      gridtolerance="10"
-     inkscape:cx="-1.0897124"
+     inkscape:cx="12.463911"
      inkscape:window-height="1006"
      inkscape:measure-start="21.6858,252.097"
      inkscape:pagecheckerboard="true"
@@ -99,11 +99,11 @@
        inkscape:collect="always"
        id="linearGradient915">
       <stop
-         style="stop-color:#404040;stop-opacity:1;"
+         style="stop-color:#1b1b1b;stop-opacity:1;"
          offset="0"
          id="stop911" />
       <stop
-         style="stop-color:#202020;stop-opacity:1;"
+         style="stop-color:#1d1d1d;stop-opacity:1;"
          offset="1"
          id="stop913" />
     </linearGradient>
