@@ -92,8 +92,8 @@ public:
   CDKnob() {
   }
 
-  void setSVG(std::shared_ptr<SVG> svg) {
-    app::SvgKnob::setSVG(svg);
+  void setSVG(std::shared_ptr<Svg> svg) {
+    app::SvgKnob::setSvg(svg);
 
     shadow.setBox(box);
   }
@@ -543,7 +543,7 @@ private:
   CDShadow shadow = CDShadow();
 
 public:
-  void setSVG(std::shared_ptr<SVG> svg) {
+  void setSVG(std::shared_ptr<Svg> svg) {
     shadow.setBox(box);
   }
 

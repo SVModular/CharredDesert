@@ -1,4 +1,6 @@
 build
 dist
+dep
 plugin.dylib
+plugin.dll
 .DS_Store
