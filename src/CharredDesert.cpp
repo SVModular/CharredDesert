@@ -22,4 +22,5 @@ void init(rack::Plugin *p) {
   p->addModel(modelTine);
   p->addModel(modelK);
   p->addModel(modelX);
+  p->addModel(modelTsunami);
 }

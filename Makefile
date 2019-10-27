@@ -1,11 +1,11 @@
 # FLAGS will be passed to both the C and C++ compiler
 FLAGS +=
 CFLAGS +=
-CXXFLAGS +=
+CXXFLAGS += -g
 
 # Careful about linking to libraries, since you can't assume much about the user's environment and library search path.
 # Static libraries are fine.
-LDFLAGS +=
+LDFLAGS += -g
 
 # Controllers
 CONTROLLERS += $(wildcard src/controller/*.cpp)

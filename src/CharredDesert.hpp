@@ -29,3 +29,4 @@ extern Model *modelM;
 extern Model *modelTine;
 extern Model *modelK;
 extern Model *modelX;
+extern Model *modelTsunami;
