@@ -9,13 +9,7 @@ This is a growing work in progress, with only a couple of utility modules curren
 More modules will be added, so if you are interested in following along, either
 star the repo, or keep checking back.
 
-## Current Modules
-
-![CV-SEQ](docs/images/cvseq.png) ![DTMF](docs/images/dtmf.png) ![EQ](docs/images/eq.png) ![NOISE](docs/images/noise.png) ![NOT](docs/images/not.png) ![OSCAR^2](docs/images/oscar2.png) ![PAN](docs/images/pan.png) ![SHIFT](docs/images/shift.png) ![CARBON](docs/images/carbon.png) ![MIXER](docs/images/mixer.png)
-
-For more information, see the [documentation](docs/README.md).
-
-Want to help fund more development?  [Donate now](https://paypal.me/JerrySievert)!
+See: https://legitimatesounding.com/sv-modular/charred-desert/index.html for more information.
 
 ## Building
 
