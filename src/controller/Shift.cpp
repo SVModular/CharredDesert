@@ -2,8 +2,8 @@
 
 ShiftModule::ShiftModule() {
   config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
-  configParam(ShiftModule::SWITCH, 0.0f, 1.0f, 0.0f);
-  configParam(ShiftModule::KNOB, -5.0f, 5.0f, 0.0f);
+  configParam(ShiftModule::SWITCH, 0.0f, 1.0f, 0.0f, "Natural/Clip");
+  configParam(ShiftModule::KNOB, -5.0f, 5.0f, 0.0f, "Amount");
 }
 
 #define ADD_CV(a, b) (a.value + b.value)

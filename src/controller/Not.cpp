@@ -2,7 +2,7 @@
 
 NotModule::NotModule() {
   config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
-  configParam(NotModule::SWITCH, 0.0, 1.0, 1.0);
+  configParam(NotModule::SWITCH, 0.0, 1.0, 1.0, "CV/Voct");
 }
 
 void NotModule::process(const ProcessArgs &args) {

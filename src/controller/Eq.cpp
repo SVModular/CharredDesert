@@ -2,9 +2,9 @@
 
 EqModule::EqModule() {
   config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
-  configParam(EqModule::FREQ_PARAM, 30.0f, 14000.0f, 7000.0f);
-  configParam(EqModule::TYPE_PARAM, 0.0f, 6.0f, 0.0f);
-  configParam(EqModule::Q_PARAM, 0.1f, 6.0f, 0.1f);
+  configParam(EqModule::FREQ_PARAM, 30.0f, 14000.0f, 7000.0f, "Frequency");
+  configParam(EqModule::TYPE_PARAM, 0.0f, 6.0f, 0.0f, "Type");
+  configParam(EqModule::Q_PARAM, 0.1f, 6.0f, 0.1f, "Q");
   sampleRate = APP->engine->getSampleRate();
   filter = new Biquad(bq_type_lowpass, frequency / sampleRate, q, 6);
   filter->calcBiquad();

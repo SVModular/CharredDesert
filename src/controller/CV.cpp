@@ -6,8 +6,8 @@ CVModule::CVModule() {
   for (int i = 0; i < CV_COUNT; i++) {
     on[i] = false;
     cv[i] = new SynthDevKit::CV(0.5f);
-    configParam(CVModule::SWITCH + i, 0.0f, 1.0f, 0.0f);
-    configParam(CVModule::KNOB + i, 0.0f, 10.0f, 0.0f);
+    configParam(CVModule::SWITCH + i, 0.0f, 1.0f, 0.0f, "On/Off");
+    configParam(CVModule::KNOB + i, 0.0f, 10.0f, 0.0f, "Value");
   }
 }
 

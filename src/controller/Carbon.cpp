@@ -4,8 +4,8 @@
 
 CarbonModule::CarbonModule() {
   config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
-  configParam(CarbonModule::FREQ_PARAM, 20.0f, 6000.0f, (6000 - 20) / 2);
-  configParam(CarbonModule::REZ_PARAM, 0.0f, 4.0f, 2.0f);
+  configParam(CarbonModule::FREQ_PARAM, 20.0f, 6000.0f, (6000 - 20) / 2, "Frequency");
+  configParam(CarbonModule::REZ_PARAM, 0.0f, 4.0f, 2.0f, "Resonance");
   frequency = 0.0f;
   filter.clear();
 }

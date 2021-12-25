@@ -31,19 +31,19 @@ Oscar2Module::Oscar2Module() {
   osc1 = new LowFrequencyOscillator;
   osc2 = new LowFrequencyOscillator;
 
-  configParam(Oscar2Module::SHAPE_PARAM1, 0.0f, 3.0f, 0.0f);
-  configParam(Oscar2Module::SHIFT_PARAM1, 0.0f, 10.0f, 0.0f);
-  configParam(Oscar2Module::OCTAVE_PARAM1, -4.0f, 4.0f, 0.0f);
-  configParam(Oscar2Module::FINE_PARAM1, -1.0f, 1.0f, 0.0f);
-  configParam(Oscar2Module::RANDOM_PARAM1, 0.0f, 5.0f, 0.0f);
-  configParam(Oscar2Module::INVERT_PARAM1, 0.0f, 1.0f, 1.0f);
-  configParam(Oscar2Module::SHAPE_PARAM2, 0.0f, 3.0f, 0.0f);
-  configParam(Oscar2Module::SHIFT_PARAM2, 0.0f, 10.0f, 0.0f);
-  configParam(Oscar2Module::OCTAVE_PARAM2, -4.0f, 4.0f, 0.0f);
-  configParam(Oscar2Module::FINE_PARAM2, -1.0f, 1.0f, 0.0f);
-  configParam(Oscar2Module::RANDOM_PARAM2, 0.0f, 5.0f, 0.0f);
-  configParam(Oscar2Module::INVERT_PARAM2, 0.0f, 1.0f, 1.0f);
-  configParam(Oscar2Module::MIX_PARAM, 0.0f, 10.0f, 5.0f);
+  configParam(Oscar2Module::SHAPE_PARAM1, 0.0f, 3.0f, 0.0f, "Shape");
+  configParam(Oscar2Module::SHIFT_PARAM1, 0.0f, 10.0f, 0.0f, "Shift");
+  configParam(Oscar2Module::OCTAVE_PARAM1, -4.0f, 4.0f, 0.0f, "Octave");
+  configParam(Oscar2Module::FINE_PARAM1, -1.0f, 1.0f, 0.0f, "Fine");
+  configParam(Oscar2Module::RANDOM_PARAM1, 0.0f, 5.0f, 0.0f, "Random");
+  configParam(Oscar2Module::INVERT_PARAM1, 0.0f, 1.0f, 1.0f, "Invert");
+  configParam(Oscar2Module::SHAPE_PARAM2, 0.0f, 3.0f, 0.0f, "Shape");
+  configParam(Oscar2Module::SHIFT_PARAM2, 0.0f, 10.0f, 0.0f, "Shift");
+  configParam(Oscar2Module::OCTAVE_PARAM2, -4.0f, 4.0f, 0.0f, "Octave");
+  configParam(Oscar2Module::FINE_PARAM2, -1.0f, 1.0f, 0.0f, "Fine");
+  configParam(Oscar2Module::RANDOM_PARAM2, 0.0f, 5.0f, 0.0f, "Random");
+  configParam(Oscar2Module::INVERT_PARAM2, 0.0f, 1.0f, 1.0f, "Invert");
+  configParam(Oscar2Module::MIX_PARAM, 0.0f, 10.0f, 5.0f, "Mix");
 
 }
 

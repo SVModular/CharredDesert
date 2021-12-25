@@ -13,19 +13,19 @@ MixerCVModule::MixerCVModule() {
     channel_solo[i] = new SynthDevKit::CV(1.7f);
     channel_mute[i] = new SynthDevKit::CV(1.7f);
 
-    configParam(MixerCVModule::VOLUME_SLIDER + i, 0.0f, 1.2f, 1.0f);
-    configParam(MixerCVModule::PAN_PARAM + i, 0.0f, 1.0f, 0.5f);
-    configParam(MixerCVModule::SOLO_PARAM + i, 0.0f, 1.0f, 0.0f);
-    configParam(MixerCVModule::MUTE_PARAM + i, 0.0f, 1.0f, 0.0f);
-    configParam(MixerCVModule::MIX_PARAM + i, 0.0f, 1.0f, 0.0f);
+    configParam(MixerCVModule::VOLUME_SLIDER + i, 0.0f, 1.2f, 1.0f, "Volume");
+    configParam(MixerCVModule::PAN_PARAM + i, 0.0f, 1.0f, 0.5f, "Pan");
+    configParam(MixerCVModule::SOLO_PARAM + i, 0.0f, 1.0f, 0.0f, "Solo");
+    configParam(MixerCVModule::MUTE_PARAM + i, 0.0f, 1.0f, 0.0f, "Mute");
+    configParam(MixerCVModule::MIX_PARAM + i, 0.0f, 1.0f, 0.0f, "Mix");
   }
 
-  configParam(MixerCVModule::VOLUME_L_MAIN, 0.0f, 1.2f, 1.0f);
-  configParam(MixerCVModule::VOLUME_R_MAIN, 0.0f, 1.2f, 1.0f);
-  configParam(MixerCVModule::MUTE_L_PARAM, 0.0f, 1.0f, 0.0f);
-  configParam(MixerCVModule::MUTE_R_PARAM, 0.0f, 1.0f, 0.0f);
-  configParam(MixerCVModule::MAIN_L_MIX, 0.0f, 1.0f, 0.0f);
-  configParam(MixerCVModule::MAIN_R_MIX, 0.0f, 1.0f, 0.0f);
+  configParam(MixerCVModule::VOLUME_L_MAIN, 0.0f, 1.2f, 1.0f, "Volume Left");
+  configParam(MixerCVModule::VOLUME_R_MAIN, 0.0f, 1.2f, 1.0f, "Volume Right");
+  configParam(MixerCVModule::MUTE_L_PARAM, 0.0f, 1.0f, 0.0f, "Mute Left");
+  configParam(MixerCVModule::MUTE_R_PARAM, 0.0f, 1.0f, 0.0f, "Mute Right");
+  configParam(MixerCVModule::MAIN_L_MIX, 0.0f, 1.0f, 0.0f, "Main Left");
+  configParam(MixerCVModule::MAIN_R_MIX, 0.0f, 1.0f, 0.0f, "Main Right");
 
   master_led_l = 0.0f;
   master_led_r = 0.0f;

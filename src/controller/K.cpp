@@ -4,10 +4,10 @@
 
 KModule::KModule() {
   config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
-  configParam(RATIO, 1.0f, 10.0f, 5.0f);
-  configParam(THRESHOLD, 1.0f, 30.0f, 10.0f);
-  configParam(ATTACK, 1.0, 100.0, 10.0);
-  configParam(RELEASE, 1.0, 100.0, 10.0);
+  configParam(RATIO, 1.0f, 10.0f, 5.0f, "Ratio");
+  configParam(THRESHOLD, 1.0f, 30.0f, 10.0f, "Threshold");
+  configParam(ATTACK, 1.0, 100.0, 10.0, "Attack");
+  configParam(RELEASE, 1.0, 100.0, 10.0, "Release");
 }
 
 void KModule::process(const ProcessArgs &args) {

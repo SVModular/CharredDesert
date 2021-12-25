@@ -4,10 +4,10 @@
 
 TineModule::TineModule() {
   config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
-  configParam(POLARITY, 0, 1, 0);
-  configParam(SPLIT, 0, 10, 5);
-  configParam(LOWER_ATT, -10, 10, 0);
-  configParam(UPPER_ATT, -10, 10, 0);
+  configParam(POLARITY, 0, 1, 0, "Polarity");
+  configParam(SPLIT, 0, 10, 5, "Split");
+  configParam(LOWER_ATT, -10, 10, 0, "Low");
+  configParam(UPPER_ATT, -10, 10, 0, "High");
 }
 
 

@@ -11,16 +11,16 @@ MixerModule::MixerModule() {
     mute_button[i] = new SynthDevKit::CV(0.5f);
     solo_button[i] = new SynthDevKit::CV(0.5f);
 
-    configParam(MixerModule::VOLUME_SLIDER + i, 0.0f, 1.2f, 1.0f);
-    configParam(MixerModule::PAN_PARAM + i, 0.0f, 1.0f, 0.5f);
-    configParam(MixerModule::SOLO_PARAM + i, 0.0f, 1.0f, 0.0f);
-    configParam(MixerModule::MUTE_PARAM + i, 0.0f, 1.0f, 0.0f);
+    configParam(MixerModule::VOLUME_SLIDER + i, 0.0f, 1.2f, 1.0f, "Volume");
+    configParam(MixerModule::PAN_PARAM + i, 0.0f, 1.0f, 0.5f, "Pan");
+    configParam(MixerModule::SOLO_PARAM + i, 0.0f, 1.0f, 0.0f, "Solo");
+    configParam(MixerModule::MUTE_PARAM + i, 0.0f, 1.0f, 0.0f, "Mute");
   }
 
-  configParam(MixerModule::VOLUME_L_MAIN, 0.0f, 1.2f, 1.0f);
-  configParam(MixerModule::VOLUME_R_MAIN, 0.0f, 1.2f, 1.0f);
-  configParam(MixerModule::MUTE_L_PARAM, 0.0f, 1.0f, 0.0f);
-  configParam(MixerModule::MUTE_R_PARAM, 0.0f, 1.0f, 0.0f);
+  configParam(MixerModule::VOLUME_L_MAIN, 0.0f, 1.2f, 1.0f, "Volume Left");
+  configParam(MixerModule::VOLUME_R_MAIN, 0.0f, 1.2f, 1.0f, "Volume Right");
+  configParam(MixerModule::MUTE_L_PARAM, 0.0f, 1.0f, 0.0f, "Mute Left");
+  configParam(MixerModule::MUTE_R_PARAM, 0.0f, 1.0f, 0.0f, "Mute Right");
 
   master_led_l = 0.0f;
   master_led_r = 0.0f;

@@ -2,7 +2,7 @@
 
 PanModule::PanModule() {
   config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
-  configParam(PanModule::PAN_PARAM, -5.0f, 5.0f, 0.0f);
+  configParam(PanModule::PAN_PARAM, -5.0f, 5.0f, 0.0f, "Pan");
 }
 
 #define ADD_CV(a, b) clamp(a.value + b.value, -5.0f, 5.0f)

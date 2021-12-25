@@ -6,7 +6,7 @@ NoiseModule::NoiseModule() {
   pn = new SynthDevKit::PinkNoise(0);
   cv = new SynthDevKit::CV(1.7f);
 
-  configParam(NoiseModule::NOISE_SWITCH, 0.0, 1.0, 1.0);
+  configParam(NoiseModule::NOISE_SWITCH, 0.0, 1.0, 1.0, "Noise Type");
 }
 
 void NoiseModule::process(const ProcessArgs &args) {

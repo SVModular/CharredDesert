@@ -6,10 +6,10 @@ CVSeqModule::CVSeqModule() {
   config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
   cv = new SynthDevKit::CV(1.7f);
   currentStep = 0;
-  configParam(CVSeqModule::KNOB1, 0.0f, 10.0f, 0.0f);
-  configParam(CVSeqModule::KNOB2, 0.0f, 10.0f, 0.0f);
-  configParam(CVSeqModule::KNOB3, 0.0f, 10.0f, 0.0f);
-  configParam(CVSeqModule::KNOB4, 0.0f, 10.0f, 0.0f);
+  configParam(CVSeqModule::KNOB1, 0.0f, 10.0f, 0.0f, "Value");
+  configParam(CVSeqModule::KNOB2, 0.0f, 10.0f, 0.0f, "Value");
+  configParam(CVSeqModule::KNOB3, 0.0f, 10.0f, 0.0f, "Value");
+  configParam(CVSeqModule::KNOB4, 0.0f, 10.0f, 0.0f, "Value");
 }
 
 void CVSeqModule::process(const ProcessArgs &args) {

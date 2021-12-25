@@ -6,15 +6,15 @@ TsunamiModule::TsunamiModule() {
 
   sampleRate = 44100;
   for (uint8_t i = 0; i < SHIFT_COUNT; i++) {
-    configParam(TsunamiModule::LEVEL + i, 0.0f, 1.0f, 0.5f);
-    configParam(TsunamiModule::SHIFT + i, 0.0f, 1.0f, float(i) / 10.0);
+    configParam(TsunamiModule::LEVEL + i, 0.0f, 1.0f, 0.5f, "Level");
+    configParam(TsunamiModule::SHIFT + i, 0.0f, 1.0f, float(i) / 10.0, "Shift");
 
     delay[i].setMax(uint64_t(sampleRate / 10.0));
     uint64_t nDelay = uint64_t((sampleRate / 10.0) * (float(i) / 10.0));
     delay[i].setDelay(nDelay);
   }
 
-  configParam(TsunamiModule::MASTER_LEVEL, 0.0f, 1.0f, 0.5f);
+  configParam(TsunamiModule::MASTER_LEVEL, 0.0f, 1.0f, 0.5f, "Level");
 
 }
 

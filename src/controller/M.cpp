@@ -5,7 +5,7 @@
 MModule::MModule() {
   config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
   for (int i = 0; i < M_COUNT; i++) {
-    configParam(MModule::KNOB + i, 0.0f, 1.0f, 0.5f);
+    configParam(MModule::KNOB + i, 0.0f, 1.0f, 0.5f, "Volume");
   }
 }
 
