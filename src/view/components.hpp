@@ -574,14 +574,13 @@ bq_type_highshelf
 
 struct EqTypeDisplay : TransparentWidget {
   uint8_t *value = nullptr;
-  std::shared_ptr<Font> font;
 
 	EqTypeDisplay ( ) {
     value = nullptr;
-    font = APP->window->loadFont(asset::plugin(pluginInstance, "res/digit.ttf"));
   }
 
   void draw (const DrawArgs &args) override {
+    std::shared_ptr<Font> font = APP->window->loadFont(asset::plugin(pluginInstance, "res/digit.ttf"));
     nvgFontSize(args.vg, 6);
 		nvgFontFaceId(args.vg, font->handle);
 		nvgTextLetterSpacing(args.vg, 0.5);
@@ -628,14 +627,13 @@ struct EqTypeDisplay : TransparentWidget {
 
 struct FrequencyDisplay : TransparentWidget {
   float *value;
-  std::shared_ptr<Font> font;
 
 	FrequencyDisplay ( ) {
     value = NULL;
-    font = APP->window->loadFont(asset::plugin(pluginInstance, "res/digit.ttf"));
   }
 
   void draw (const DrawArgs &args) override {
+    std::shared_ptr<Font> font = APP->window->loadFont(asset::plugin(pluginInstance, "res/digit.ttf"));
     char text[16];
     nvgFontSize(args.vg, 7);
 		nvgFontFaceId(args.vg, font->handle);
@@ -655,14 +653,13 @@ struct FrequencyDisplay : TransparentWidget {
 
 struct WaveSelect : TransparentWidget {
   uint8_t *value;
-  std::shared_ptr<Font> font;
 
 	WaveSelect ( ) {
     value = NULL;
-    font = APP->window->loadFont(asset::plugin(pluginInstance, "res/digit.ttf"));
   }
 
   void draw (const DrawArgs &args) override {
+    std::shared_ptr<Font> font = APP->window->loadFont(asset::plugin(pluginInstance, "res/digit.ttf"));
     nvgFontSize(args.vg, 8);
 		nvgFontFaceId(args.vg, font->handle);
 		nvgTextLetterSpacing(args.vg, 1);
